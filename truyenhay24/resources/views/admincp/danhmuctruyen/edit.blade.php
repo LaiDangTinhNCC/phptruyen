@@ -23,7 +23,11 @@
                 @csrf
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tên danh mục</label>
-                <input name="tendanhmuc" value="{{$danhmuc->tendanhmuc}}" type="text" class="form-control" placeholder="Tên danh mục...">
+                <input id="slug" onkeyup="ChangeToSlug();" name="tendanhmuc" value="{{$danhmuc->tendanhmuc}}" type="text" class="form-control" placeholder="Tên danh mục...">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Slug danh mục</label>
+                <input id="convert_slug" name="slug_danhmuc" value="{{$danhmuc->slug_danhmuc}}" type="text" class="form-control" placeholder="Slug danh mục...">
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>

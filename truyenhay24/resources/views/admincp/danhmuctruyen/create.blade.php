@@ -22,12 +22,18 @@
                 @csrf
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tên danh mục</label>
-                <input name="tendanhmuc" value="{{old('tendanhmuc')}}" type="text" class="form-control" placeholder="Tên danh mục...">
+                <input id="slug" name="tendanhmuc" onkeyup="ChangeToSlug();" value="{{old('tendanhmuc')}}" type="text" class="form-control" placeholder="Tên danh mục...">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Slug danh mục</label>
+                <input id="convert_slug"  name="slug_danhmuc" value="{{old('slug_danhmuc')}}" type="text" class="form-control" placeholder="Slug danh mục...">
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>
                 <select name="kichhoat" class="form-select" aria-label="Default select example">
                     <option value="0" @if(old('kichhoat') == '0') selected @endif>Kích hoạt</option>
+
                     <option value="1" @if(old('kichhoat') == '1') selected @endif>Không kích hoạt</option>
                   </select>
               </div>

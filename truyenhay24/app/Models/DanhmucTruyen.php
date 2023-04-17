@@ -10,7 +10,7 @@ class DanhmucTruyen extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'tendanhmuc', 'kichhoat'
+        'tendanhmuc', 'kichhoat', 'slug_danhmuc'
     ];
     protected $primaryKey = 'id';
     protected $table = 'danhmuc';
