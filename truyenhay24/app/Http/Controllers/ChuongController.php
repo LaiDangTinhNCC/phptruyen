@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Chuong;
+use App\Models\Truyen;
 class ChuongController extends Controller
 {
     /**
