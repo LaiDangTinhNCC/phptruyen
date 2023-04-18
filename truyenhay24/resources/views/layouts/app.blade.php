@@ -83,22 +83,19 @@
     <!-- preview anh -->
     <script>
 function previewImage(input) {
-  var preview = document.getElementById('preview-image');
-  var file    = input.files[0];
-  var reader  = new FileReader();
-
-  reader.onloadend = function () {
-    preview.src = reader.result;
-    preview.style.display = "block";
-  }
-
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
-    preview.style.display = "none";
+  var previewImage = document.getElementById('preview-image');
+  var image_s = document.getElementById('image_s');
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      previewImage.style.display = 'block';
+      previewImage.src = e.target.result;
+      image_s.style.display = 'none';
+    }
+    reader.readAsDataURL(input.files[0]);
   }
 }
+
 </script>
 
 <script type="text/javascript">

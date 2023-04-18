@@ -14,4 +14,9 @@ class DanhmucTruyen extends Model
     ];
     protected $primaryKey = 'id';
     protected $table = 'danhmuc';
+
+    // 1 danh muc co nhieu truyen
+    public function truyen() {
+        return $this->hasMany('App\Models\Truyen');
+    }
 }
