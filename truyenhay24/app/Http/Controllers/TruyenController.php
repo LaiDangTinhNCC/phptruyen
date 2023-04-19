@@ -45,7 +45,7 @@ class TruyenController extends Controller
                 'tomtat' => 'required',
                 'danhmuc' => 'required',
                 'kichhoat' => 'required',
-                'hinhanh' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+                'hinhanh' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000',
             ],
             [
                 'tentruyen.required' => 'Vui lòng nhập tên truyện',

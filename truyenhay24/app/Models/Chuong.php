@@ -18,4 +18,7 @@ class Chuong extends Model
     public function danhmuctruyen() {
         return $this->belongsTo('App\Models\DanhmucTruyen', 'danhmuc_id', 'id');
     }
+    public function truyen() {
+        return $this->belongsTo('App\Models\Truyen');
+    }
 }

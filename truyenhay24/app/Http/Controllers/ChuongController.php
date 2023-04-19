@@ -14,7 +14,8 @@ class ChuongController extends Controller
      */
     public function index()
     {
-        return view('admincp.chuong.index');
+        $chuong = Chuong::with('truyen')->orderBy('id', 'DESC')->get();
+        return view('admincp.chuong.index')->with(compact('chuong'));
     }
 
     /**
@@ -24,7 +25,8 @@ class ChuongController extends Controller
      */
     public function create()
     {
-        return view('admincp.chuong.create');
+        $truyen = Truyen::orderBy('id', 'DESC')->get();
+        return view('admincp.chuong.create')->with(compact('truyen'));
     }
 
     /**
@@ -35,7 +37,31 @@ class ChuongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate(
+            [
+                'tieude' => 'required|unique:chuong|max:255',
+                'slug_chuong' => 'required|unique:chuong|max:255',
+                'noidung' => 'required',
+                'kichhoat' => 'required',
+                'truyen_id' => 'required',
+            ],
+            [
+                'tieude.required' => 'Vui lòng nhập tiêu đề',
+                'tieude.unique' => 'Tiêu đề đã tồn tại vui lòng điền tên khác',
+                'slug_chuong.required' => 'Vui lòng nhập slug chương',
+                'slug_chuong.unique' => 'Slug chương đã tồn tại vui lòng điền slug khác',
+                'noidung.required' => 'Vui lòng nhập nội dung truyện',
+            ]
+        );
+        // $data = $request->all();
+        $chuong = new Chuong();
+        $chuong->tieude = $data['tieude'];
+        $chuong->slug_chuong = $data['slug_chuong'];
+        $chuong->noidung = $data['noidung'];
+        $chuong->kichhoat = $data['kichhoat'];
+        $chuong->truyen_id = $data['truyen_id'];
+        $chuong->save();
+        return redirect()->back()->with('status','Thêm chương thành công');
     }
 
     /**
@@ -57,7 +83,9 @@ class ChuongController extends Controller
      */
     public function edit($id)
     {
-        return view('admincp.chuong.edit');
+        $chuong = Chuong::find($id);
+        $truyen = Truyen::orderBy('id', 'DESC')->get();
+        return view('admincp.chuong.edit')->with(compact('truyen', 'chuong'));
     }
 
     /**
@@ -69,7 +97,29 @@ class ChuongController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate(
+            [
+                'tieude' => 'required|max:255',
+                'slug_chuong' => 'required|max:255',
+                'noidung' => 'required',
+                'kichhoat' => 'required',
+                'truyen_id' => 'required',
+            ],
+            [
+                'tieude.required' => 'Vui lòng nhập tiêu đề',
+                'slug_chuong.required' => 'Vui lòng nhập slug chương',
+                'noidung.required' => 'Vui lòng nhập nội dung truyện',
+            ]
+        );
+        // $data = $request->all();
+        $chuong = Chuong::find($id);
+        $chuong->tieude = $data['tieude'];
+        $chuong->slug_chuong = $data['slug_chuong'];
+        $chuong->noidung = $data['noidung'];
+        $chuong->kichhoat = $data['kichhoat'];
+        $chuong->truyen_id = $data['truyen_id'];
+        $chuong->save();
+        return redirect()->back()->with('status','Cập nhật chương thành công');
     }
 
     /**
@@ -80,6 +130,7 @@ class ChuongController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Chuong::find($id)->delete();
+        return redirect()->back()->with('status','Xóa chương thành công');
     }
 }
