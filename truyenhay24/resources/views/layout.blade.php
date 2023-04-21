@@ -139,13 +139,136 @@
 <!-- TRUYỆN MỚI CẬP NHẬT -->
 <div>
   <div style="display: flex; justify-content: space-between">
-  <h6 style="font-weight: bold">TRUYỆN MỚI CẬP NHẬT<i class="fa fa-book" aria-hidden="true" style="margin-left: 10px"></i></h6>
+  <h6 style="font-weight: bold">TRUYỆN MỚI CẬP NHẬT<i class="fa fa-star" aria-hidden="true" style="margin-left: 10px"></i></h6>
   <a href="" class="btn btn-light">Xem thêm<i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px"></i></a>
   </div>
+  
+  <div class="album py-1">
+
+    <div>
+
+
+      <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
+
+        <div class="col">
+          <div>
+          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daula579.jpg')}}">
+            <div style="margin-top: 10px">
+              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div>
+          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daula579.jpg')}}">
+            <div style="margin-top: 10px">
+              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div>
+          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daula579.jpg')}}">
+            <div style="margin-top: 10px">
+              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div>
+          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daula579.jpg')}}">
+            <div style="margin-top: 10px">
+              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div>
+          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daupha99.jpg')}}">
+            <div style="margin-top: 10px">
+              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div>
+          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/thon-phe-tinh-khong71.jpg')}}">
+            <div style="margin-top: 10px">
+              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div>
+          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/thon-phe-tinh-khong71.jpg')}}">
+            <div style="margin-top: 10px">
+              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+    
+
+
+  </div>
+
+  
 </div>
+
+
 <!-- footer -->
 <hr/>
-<div>Chân trang</div>
+<div class="d-flex justify-content-between align-content-center m-4">
+<div class="col col-sm-10">Truyện Full - Đọc truyện online, đọc truyện chữ, truyện hay. Website luôn cập nhật những bộ truyện mới thuộc các thể loại đặc sắc như truyện tiên hiệp, truyện kiếm hiệp, hay truyện ngôn tình một cách nhanh nhất. Hỗ trợ mọi thiết bị như di động và máy tính bảng.</div>
+  <div class="btn btn-primary">Lên trên cùng</div>
+</div>
 </div>
 
 </div>
