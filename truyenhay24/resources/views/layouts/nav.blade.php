@@ -8,11 +8,11 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Danh mục
+            Thể loại
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{{route('danhmuc.create')}}">Thêm danh mục</a></li>
-            <li><a class="dropdown-item" href="{{route('danhmuc.index')}}">Liệt kê danh mục</a></li>
+            <li><a class="dropdown-item" href="{{route('theloai.create')}}">Thêm thể loại</a></li>
+            <li><a class="dropdown-item" href="{{route('theloai.index')}}">Liệt kê thể loại</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

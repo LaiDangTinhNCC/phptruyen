@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DanhmucTruyen extends Model
+class TheloaiTruyen extends Model
 {
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'tendanhmuc', 'kichhoat', 'slug_danhmuc'
+        'tentheloai', 'kichhoat', 'slug_theloai'
     ];
     protected $primaryKey = 'id';
-    protected $table = 'danhmuc';
+    protected $table = 'theloai';
 
     // 1 danh muc co nhieu truyen
     public function truyen() {

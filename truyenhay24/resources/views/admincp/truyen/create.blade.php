@@ -49,10 +49,10 @@
               </div>
 
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Danh mục truyện</label>
-                <select name="danhmuc" class="form-select" aria-label="Default select example">
-                    @foreach($danhmuc as $key => $muc)
-                    <option value="{{$muc->id}}">{{$muc->tendanhmuc}}</option>
+                <label for="exampleInputEmail1" class="form-label">Thể loại truyện</label>
+                <select name="theloai" class="form-select" aria-label="Default select example">
+                    @foreach($theloai as $key => $muc)
+                    <option value="{{$muc->id}}">{{$muc->tentheloai}}</option>
                     @endforeach
                   </select>
               </div>

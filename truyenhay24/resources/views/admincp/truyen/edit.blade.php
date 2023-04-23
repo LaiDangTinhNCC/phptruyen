@@ -23,11 +23,11 @@
                 @csrf
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tên truyện</label>
-                <input id="slug" onkeyup="ChangeToSlug();" name="tentruyen" value="{{$truyen->tentruyen}}" type="text" class="form-control" placeholder="Tên danh mục...">
+                <input id="slug" onkeyup="ChangeToSlug();" name="tentruyen" value="{{$truyen->tentruyen}}" type="text" class="form-control" placeholder="Tên thể loại...">
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Slug truyện</label>
-                <input id="convert_slug" name="slug_truyen" value="{{$truyen->slug_truyen}}" type="text" class="form-control" placeholder="Slug danh mục...">
+                <input id="convert_slug" name="slug_truyen" value="{{$truyen->slug_truyen}}" type="text" class="form-control" placeholder="Slug thể loại...">
               </div>
 
               <div class="mb-3">
@@ -50,10 +50,10 @@
               </div>
 
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Danh mục truyện</label>
-                <select name="danhmuc" class="form-select" aria-label="Default select example">
-                    @foreach($danhmuc as $key => $muc)
-                    <option {{$muc->id==$truyen->danhmuc_id ? 'selected' : ''}} value="{{$muc->id}}">{{$muc->tendanhmuc}}</option>
+                <label for="exampleInputEmail1" class="form-label">Thể loại truyện</label>
+                <select name="theloai" class="form-select" aria-label="Default select example">
+                    @foreach($theloai as $key => $muc)
+                    <option {{$muc->id==$truyen->theloai_id ? 'selected' : ''}} value="{{$muc->id}}">{{$muc->tentheloai}}</option>
                     @endforeach
                   </select>
               </div>

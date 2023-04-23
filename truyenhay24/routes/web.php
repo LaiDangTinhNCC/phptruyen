@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DanhmucController;
+use App\Http\Controllers\TheloaiController;
 use App\Http\Controllers\TruyenController;
 use App\Http\Controllers\ChuongController;
 use App\Http\Controllers\NguoiDungController;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +19,18 @@ use App\Http\Controllers\NguoiDungController;
 |
 */
 
-Route::get('/', function () {
-    return view('layout');
-});
+Route::get('/', [IndexController::class, 'home']);
+
+Route::get('/the-loai/{slug}', [IndexController::class, 'theloai']);
+Route::get('/xem-truyen/{slug}', [IndexController::class, 'xemtruyen']);
+
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-Route::resource('/danhmuc', DanhmucController::class);
+Route::resource('/theloai', TheloaiController::class);
 
 
 Route::resource('/truyen', TruyenController::class);

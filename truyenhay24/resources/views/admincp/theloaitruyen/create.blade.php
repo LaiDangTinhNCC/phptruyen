@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">Thêm danh mục</div>
+          <div class="card-header">Thêm </div>
           @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -18,16 +18,16 @@
 @endif
           <div class="card-body"> @if (session('status')) <div class="alert alert-success" role="alert">
               {{ session('status') }}
-            </div> @endif <form method="POST" action="{{route('danhmuc.store')}}">
+            </div> @endif <form method="POST" action="{{route('theloai.store')}}">
                 @csrf
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Tên danh mục</label>
-                <input id="slug" name="tendanhmuc" onkeyup="ChangeToSlug();" value="{{old('tendanhmuc')}}" type="text" class="form-control" placeholder="Tên danh mục...">
+                <label for="exampleInputEmail1" class="form-label">Tên thể loại</label>
+                <input id="slug" name="tentheloai" onkeyup="ChangeToSlug();" value="{{old('tentheloai')}}" type="text" class="form-control" placeholder="Tên thể loại...">
               </div>
 
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Slug danh mục</label>
-                <input id="convert_slug"  name="slug_danhmuc" value="{{old('slug_danhmuc')}}" type="text" class="form-control" placeholder="Slug danh mục...">
+                <label for="exampleInputEmail1" class="form-label">Slug thể loại</label>
+                <input id="convert_slug"  name="slug_theloai" value="{{old('slug_theloai')}}" type="text" class="form-control" placeholder="Slug thể loại...">
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>
@@ -37,7 +37,7 @@
                     <option value="1" @if(old('kichhoat') == '1') selected @endif>Không kích hoạt</option>
                   </select>
               </div>
-              <button type="submit" name="themdanhmuc" class="btn btn-primary">Thêm</button>
+              <button type="submit" name="themtheloai" class="btn btn-primary">Thêm</button>
             </form>
           </div>
         </div>

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">Cập nhật danh mục</div>
+          <div class="card-header">Cập nhật thể loại</div>
           @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -18,21 +18,21 @@
 @endif
           <div class="card-body"> @if (session('status')) <div class="alert alert-success" role="alert">
               {{ session('status') }}
-            </div> @endif <form method="POST" action="{{route('danhmuc.update',[$danhmuc->id])}}">
+            </div> @endif <form method="POST" action="{{route('theloai.update',[$theloai->id])}}">
                 @method('PUT')
                 @csrf
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Tên danh mục</label>
-                <input id="slug" onkeyup="ChangeToSlug();" name="tendanhmuc" value="{{$danhmuc->tendanhmuc}}" type="text" class="form-control" placeholder="Tên danh mục...">
+                <label for="exampleInputEmail1" class="form-label">Tên thể loại</label>
+                <input id="slug" onkeyup="ChangeToSlug();" name="tentheloai" value="{{$theloai->tentheloai}}" type="text" class="form-control" placeholder="Tên thể loại...">
               </div>
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Slug danh mục</label>
-                <input id="convert_slug" name="slug_danhmuc" value="{{$danhmuc->slug_danhmuc}}" type="text" class="form-control" placeholder="Slug danh mục...">
+                <label for="exampleInputEmail1" class="form-label">Slug thể loại</label>
+                <input id="convert_slug" name="slug_theloai" value="{{$theloai->slug_theloai}}" type="text" class="form-control" placeholder="Slug thể loại...">
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>
                 <select name="kichhoat" class="form-select" aria-label="Default select example">
-                    @if($danhmuc->kichhoat==0)
+                    @if($theloai->kichhoat==0)
                     <option selected value="0">Kích hoạt</option>
                     <option value="1">Không kích hoạt</option>
                     @else
@@ -41,7 +41,7 @@
                     @endif
                   </select>
               </div>
-              <button type="submit" name="themdanhmuc" class="btn btn-primary">Cập nhật</button>
+              <button type="submit" name="themtheloai" class="btn btn-primary">Cập nhật</button>
             </form>
           </div>
         </div>

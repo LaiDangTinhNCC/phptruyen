@@ -23,28 +23,45 @@
     transform: translateX(-100%);
   }
 }
+.bg-title:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
 .bg-title {
   position: relative;
-  display: inline-block;
+  cursor: pointer;
+  border: 3px solid #000;
+  border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E") 1;
 }
-.bg-title::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
-}
-.bg-title h3{
-  display: flex;
-  padding: 10px 10px 0px 10px;
-  font-size: 15px;
-  align-items: end;
-  justify-content: center;
-  color: white;
+.bg-title img{
+  height: 185px;
   z-index: 1;
+}
+.bg-title .content{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 35, 82, 0.7);
+  z-index: 999;
+  width: 100%;
+  color: #fff;
+}
+.bg-title .content h6{
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.col-content {
+  cursor: pointer;
+}
+.image-hover {
+  border: 3px solid #000;
+  height: 195px;
+}
+.image-hover:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
 }
 </style>
     </head>
@@ -53,7 +70,7 @@
             <!-- menu -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
   <div class="container-fluid">
-    <a class="navbar-brand " href="#"><i class="fa fa-leanpub" style="margin-right: 10px" aria-hidden="true"></i>TRUYỆN HAY</a>
+    <a class="navbar-brand " href="{{url('/')}}"><i class="fa fa-leanpub" style="margin-right: 10px" aria-hidden="true"></i>TRUYỆN HAY</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -61,20 +78,12 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa fa-bars" aria-hidden="true" style="margin-right: 5px"></i>Danh sách
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Truyện mới cập nhật</a></li>
-            <li><a class="dropdown-item" href="#">Truyện được xem nhiều</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa fa-bars" aria-hidden="true" style="margin-right: 5px"></i>Thể loại
           </a>
           <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            @foreach($theloai as $key => $the)
+            <li><a class="dropdown-item" href="{{url('the-loai/'.$the->slug_theloai)}}">{{$the->tentheloai}}</a></li>
+            @endforeach
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -97,12 +106,25 @@
           </ul>
         </li>
       </ul>
+      <div class="d-flex justify-content-between" style="margin-right: 30px">
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
         <button class="btn btn-warning text-light" type="submit">
         <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </form>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-user" aria-hidden="true" style="margin-right: 5px"></i>Thành viên
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
+            <li><a class="dropdown-item" href="#">Đăng ký</a></li>
+          </ul>
+        </li>
+      </ul>
+      </div>
     </div>
   </div>
 </nav>
@@ -111,163 +133,19 @@
 <i class="fa fa-truck" aria-hidden="true" style="margin-right: 10px"></i>Đọc truyện online, đọc truyện chữ, truyện full, truyện hay. Tổng hợp đầy đủ và cập nhật liên tục. <i class="fa fa-heartbeat" aria-hidden="true" style="margin-left: 10px"></i>
 </div>
 </p>
-<div class="container-fluid mt-3">
-<!-- slide -->
-<h6 style="font-weight: bold">TRUYỆN HOT<i class="fa fa-fire" aria-hidden="true" style="margin-left: 10px"></i></h6>
-<div class="owl-carousel owl-theme">
-    <div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-<div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-<div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-<div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-<div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-<div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-<div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-<div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-<div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-<div class="item bg-title"><img src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-<h3>Đấu la đại lục</h3></div>
-</div>
-<!-- TRUYỆN MỚI CẬP NHẬT -->
 <div>
-  <div style="display: flex; justify-content: space-between">
-  <h6 style="font-weight: bold">TRUYỆN MỚI CẬP NHẬT<i class="fa fa-star" aria-hidden="true" style="margin-left: 10px"></i></h6>
-  <a href="" class="btn btn-light">Xem thêm<i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px"></i></a>
-  </div>
-  
-  <div class="album py-1">
 
-    <div>
-
-
-      <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
-
-        <div class="col">
-          <div>
-          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-            <div style="margin-top: 10px">
-              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div>
-          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-            <div style="margin-top: 10px">
-              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div>
-          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-            <div style="margin-top: 10px">
-              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div>
-          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daula579.jpg')}}">
-            <div style="margin-top: 10px">
-              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div>
-          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/daupha99.jpg')}}">
-            <div style="margin-top: 10px">
-              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div>
-          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/thon-phe-tinh-khong71.jpg')}}">
-            <div style="margin-top: 10px">
-              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div>
-          <img class="card-img-top" width="100%"  src="{{asset('public/uploads/truyen/thon-phe-tinh-khong71.jpg')}}">
-            <div style="margin-top: 10px">
-              <h5 class="text-center fw-bold">Đấu la đại lục</h5>
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-
-
-
-    </div>
-    
-
-
-  </div>
-
-  
-</div>
-
-
+<!-- Slider -->
+@yield('slide')
+<!-- Truyện mới -->
+@yield('content')
 <!-- footer -->
 <hr/>
 <div class="d-flex justify-content-between align-content-center m-4">
 <div class="col col-sm-10">Truyện Full - Đọc truyện online, đọc truyện chữ, truyện hay. Website luôn cập nhật những bộ truyện mới thuộc các thể loại đặc sắc như truyện tiên hiệp, truyện kiếm hiệp, hay truyện ngôn tình một cách nhanh nhất. Hỗ trợ mọi thiết bị như di động và máy tính bảng.</div>
-  <div class="btn btn-primary">Lên trên cùng</div>
+  <a href="#" class="btn btn-primary">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  </a>
 </div>
 </div>
 
@@ -280,11 +158,14 @@
     loop:true,
     margin:10,
     responsiveClass:true,
+    autoplay:true,
+    autoplayTimeout:2000,
+    autoplayHoverPause:true,
     responsive:{
         0:{
             items:1,
         },
-        100:{
+        200:{
           items: 2,
         },
         300:{
@@ -293,8 +174,11 @@
         600:{
             items:4,
         },
+        800: {
+          items:5,
+        },
         1000:{
-            items:6,
+            items:8,
             loop:false
         }
     }
