@@ -17,7 +17,7 @@
         @foreach($truyen as $key => $value)
         <div class="col col-content">
           <a href="{{url('xem-truyen/'.$value->slug_truyen)}}" class="col-sm-9 d-flex flex-column" style="width: 130px">
-            <img class="image-hover"  src="{{asset('public/uploads/truyen/dau-la-dai-luc-23042045.jpg')}}">
+            <img class="image-hover"  src="{{asset('public/uploads/truyen/'.$value->hinhanh)}}">
             <div class="d-block justify-content-center align-items-center" style="margin-top: 12px">
             <h6 class="text-center fw-bold" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 100%;">{{$value->tentruyen}}</h6>
               <div class="d-flex justify-content-center align-items-center">

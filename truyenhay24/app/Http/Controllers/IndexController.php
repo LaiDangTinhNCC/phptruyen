@@ -16,7 +16,7 @@ class IndexController extends Controller
     public function theloai($slug) {
         return view('pages.truyen');
     }
-    public function xemtruyen() {
+    public function xemtruyen($slug) {
         $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
         return view('pages.truyen')->with(compact('theloai'));;
     }
