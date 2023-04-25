@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TheloaiTruyen;
 use App\Models\Truyen;
+use App\Models\Chuong;
 
 class IndexController extends Controller
 {
@@ -14,10 +15,17 @@ class IndexController extends Controller
         return view('pages.home')->with(compact('theloai', 'truyen'));
     }
     public function theloai($slug) {
-        return view('pages.truyen');
+        $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
+        $theloai_id = TheloaiTruyen::where('slug_theloai', $slug)->first();
+        $tentheloai = $theloai_id->tentheloai;
+        $truyen = Truyen::orderBy('id','DESC')->where('kichhoat', 0)->where('theloai_id', $theloai_id->id)->get();
+        return view('pages.theloai')->with(compact('theloai', 'truyen', 'tentheloai'));
     }
     public function xemtruyen($slug) {
         $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
-        return view('pages.truyen')->with(compact('theloai'));;
+        $truyen = Truyen::with('theloaitruyen')->where('slug_truyen', $slug)->where('kichhoat', 0)->first();
+        $chuong = Chuong::with('truyen')->orderBy('id', 'ASC')->where('truyen_id', $truyen->id)->get();
+        $cungtheloai = Truyen::with('theloaitruyen')->where('theloai_id',$truyen->theloaitruyen->id)->whereNotIn('id',[$truyen->id])->get();
+        return view('pages.truyen')->with(compact('theloai', 'truyen', 'chuong', 'cungtheloai'));;
     }
 }
