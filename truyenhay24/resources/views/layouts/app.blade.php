@@ -131,10 +131,10 @@ function previewImage(input) {
                 //In slug ra textbox có id “slug”
             document.getElementById('convert_slug').value = slug;
         }
-         
-
-   
-   
+</script>
+<script src="//cdn.ckeditor.com/4.21.0/full/ckeditor.js"></script>
+<script type="text/javascript">
+    CKEDITOR.replace('noidung_chuong');
 </script>
 </body>
 </html>

@@ -24,12 +24,16 @@
         <li>Số chương: {{$mucluc}}</li>
         <li>Số lượt xem: </li>
         <li><a href="">Xem mục lục</a></li>
-        <li><a href="" class="btn btn-sm btn-primary">Đọc online</a></li>
+        @if($chuong_dau)
+        <li><a href="{{url('xem-chuong/'.$chuong_dau->slug_chuong)}}" class="btn btn-sm btn-primary">Đọc online</a></li>
+        @else
+        <li><button class="btn btn-sm btn-warning" disabled>Chương đang cập nhật</button></li>
+        @endif
       </ul>
     </div>
   </div>
-    <div class="col-md-12 mota">
-      <p>{{!! $truyen->tomtat !!}}</p>
+    <div class="col-md-12">
+      <p>{{$truyen->tomtat}}</p>
     </div>
     <h5 style="margin-top: 10px">Mục lục</h5>
     <ul class="mucluctruyen">

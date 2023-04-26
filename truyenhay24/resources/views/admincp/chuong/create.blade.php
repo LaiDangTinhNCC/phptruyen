@@ -41,7 +41,7 @@
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nội dung</label>
-                <textarea name="noidung" class="form-control" value="{{old('noidung')}}"></textarea>
+                <textarea name="noidung" id="noidung_chuong" class="form-control" value="{{old('noidung')}}"></textarea>
               </div>
 
 

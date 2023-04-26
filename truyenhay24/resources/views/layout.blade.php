@@ -184,5 +184,19 @@
     }
 })
        </script>
+<!--route chuong -->
+       <script type="text/javascript">
+        $('.select-chuong').on('change', function(){
+          var url = $(this).val();
+          if(url){
+            window.location = url
+          }
+        });
+        current_chuong();
+        function current_chuong(){
+          var url = window.location.href;
+          $('select[name="select-chuong"]').find('opition[value="'+url+'"]').attr("selected", true);
+        }
+       </script>
     </body>
 </html>

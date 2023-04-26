@@ -25,7 +25,15 @@ class IndexController extends Controller
         $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
         $truyen = Truyen::with('theloaitruyen')->where('slug_truyen', $slug)->where('kichhoat', 0)->first();
         $chuong = Chuong::with('truyen')->orderBy('id', 'ASC')->where('truyen_id', $truyen->id)->get();
+        $chuong_dau = Chuong::with('truyen')->orderBy('id', 'ASC')->where('truyen_id', $truyen->id)->first();
         $cungtheloai = Truyen::with('theloaitruyen')->where('theloai_id',$truyen->theloaitruyen->id)->whereNotIn('id',[$truyen->id])->get();
-        return view('pages.truyen')->with(compact('theloai', 'truyen', 'chuong', 'cungtheloai'));;
+        return view('pages.truyen')->with(compact('theloai', 'truyen', 'chuong', 'cungtheloai', 'chuong_dau'));
+    }
+    public function xemchuong($slug){
+        $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
+        $truyen = Chuong::where('slug_chuong',$slug)->first();
+        $chuong = Chuong::with('truyen')->where('slug_chuong', $slug)->where('truyen_id', $truyen->truyen_id)->first();
+        $all_chuong = Chuong::with('truyen')->orderBy('id','ASC')->where('truyen_id', $truyen->truyen_id)->get();
+        return view('pages.chuong')->with(compact('theloai', 'chuong', 'all_chuong'));
     }
 }

@@ -42,7 +42,7 @@
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nội dung</label>
-                <textarea name="noidung" class="form-control" rows="5" value="{{$chuong->noidung}}}">{{$chuong->noidung}}</textarea>
+                <textarea name="noidung" id="noidung_chuong" class="form-control" rows="5" value="{{$chuong->noidung}}}">{{$chuong->noidung}}</textarea>
               </div>
 
 
