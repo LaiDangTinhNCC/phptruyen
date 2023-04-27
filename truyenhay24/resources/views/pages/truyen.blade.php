@@ -23,7 +23,6 @@
         <li>Thể loại: <a href="{{url('the-loai/'.$truyen->theloaitruyen->slug_theloai)}}">{{$truyen->theloaitruyen->tentheloai}}</a></li>
         <li>Số chương: {{$mucluc}}</li>
         <li>Số lượt xem: {{$truyen->luotxem}}</li>
-        <li><a href="">Xem mục lục</a></li>
         @if($chuong_dau)
         <li><a href="{{url('xem-chuong/'.$chuong_dau->slug_chuong)}}" class="btn btn-sm btn-primary">Đọc online</a></li>
         @else
@@ -33,7 +32,7 @@
     </div>
   </div>
     <div class="col-md-12">
-      <p>{{$truyen->tomtat}}</p>
+      <p>{{!! $truyen->tomtat !!}}</p>
     </div>
     <h5 style="margin-top: 10px">Mục lục</h5>
     <ul class="mucluctruyen">

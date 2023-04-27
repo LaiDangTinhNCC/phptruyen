@@ -42,6 +42,7 @@ class TruyenController extends Controller
                 'tentruyen' => 'required|unique:truyen|max:255',
                 'slug_truyen' => 'required|unique:truyen|max:255',
                 'tacgia' => 'required',
+                'slug_tacgia' => 'required',
                 'tomtat' => 'required',
                 'theloai' => 'required',
                 'kichhoat' => 'required',
@@ -65,6 +66,7 @@ class TruyenController extends Controller
         $truyen->tentruyen = $data['tentruyen'];
         $truyen->slug_truyen = $data['slug_truyen'];
         $truyen->tacgia = $data['tacgia'];
+        $truyen->slug_tacgia = $data['slug_tacgia'];
         $truyen->kichhoat = $data['kichhoat'];
         $truyen->theloai_id = $data['theloai'];
         $truyen->tomtat = $data['tomtat'];
@@ -117,6 +119,7 @@ class TruyenController extends Controller
                 'tentruyen' => 'required|max:255',
                 'slug_truyen' => 'required|max:255',
                 'tacgia' => 'required',
+                'slug_tacgia' => 'required',
                 'tomtat' => 'required',
                 'theloai' => 'required',
                 'kichhoat' => 'required',
@@ -135,6 +138,7 @@ class TruyenController extends Controller
         $truyen->tentruyen = $data['tentruyen'];
         $truyen->slug_truyen = $data['slug_truyen'];
         $truyen->tacgia = $data['tacgia'];
+        $truyen->slug_tacgia = $data['slug_tacgia'];
         $truyen->kichhoat = $data['kichhoat'];
         $truyen->theloai_id = $data['theloai'];
         $truyen->tomtat = $data['tomtat'];

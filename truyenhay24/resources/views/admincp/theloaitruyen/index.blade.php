@@ -18,7 +18,6 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tên thể loại</th>
-                            <th scope="col">Slug thể loại</th>
                             <th scope="col">Kích hoạt</th>
                             <th scope="col">Quản lý</th>
                           </tr>
@@ -28,7 +27,6 @@
                           <tr>
                             <th scope="row">{{$key}}</th>
                             <td>{{$theloai->tentheloai}}</td>
-                            <td>{{$theloai->slug_theloai}}</td>
                             <td>
                                 @if($theloai->kichhoat==0)
                                 <span class="text text-success">Kích hoạt</span>

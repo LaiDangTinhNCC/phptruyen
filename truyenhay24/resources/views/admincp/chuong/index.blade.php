@@ -18,7 +18,6 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tiêu đề</th>
-                            <th scope="col">Slug chương</th>
                             <th scope="col">Thuộc truyện</th>
                             <th scope="col">Nội dung</th>
                             <th scope="col">Kích hoạt</th>
@@ -30,7 +29,6 @@
                           <tr>
                             <th scope="row">{{$key}}</th>
                             <td>{{$chap->tieude}}</td>
-                            <td>{{$chap->slug_chuong}}</td>
                             <td>{{$chap->truyen->tentruyen}}</td>
                             <td>{{$chap->noidung}}</td>
                             <td>

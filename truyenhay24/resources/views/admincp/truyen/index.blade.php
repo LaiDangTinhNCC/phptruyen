@@ -20,7 +20,6 @@
                             <th scope="col">#</th>
                             <th scope="col">Tên truyện</th>
                             <th scope="col">Hình ảnh</th>
-                            <th scope="col">Slug truyện</th>
                             <th scope="col">Tác giả</th>
                             <!-- <th scope="col">Tóm tắt</th> -->
                             <th scope="col">Thể loại</th>
@@ -36,7 +35,6 @@
                             <td>
                                 <img src="{{asset('public/uploads/truyen/'.$truyen->hinhanh)}}" height="150" width="130">
                             </td>
-                            <td>{{$truyen->slug_truyen}}</td>
                             <td>{{$truyen->tacgia}}</td>
                             <!-- <td>{{$truyen->tomtat}}</td> -->
                             <td>{{$truyen->theloaitruyen->tentheloai}}</td>

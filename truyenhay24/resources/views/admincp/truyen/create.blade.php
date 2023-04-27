@@ -31,6 +31,16 @@
               </div>
 
               <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Tác giả</label>
+                <input id="slug_tacgia" name="tacgia" onkeyup="ChangeToSlugTacGia();" value="{{old('tacgia')}}" type="text" class="form-control" placeholder="Tên tác giả...">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Slug tác giả</label>
+                <input id="convert_slug_tacgia"  name="slug_tacgia" value="{{old('slug_tacgia')}}" type="text" class="form-control" placeholder="Slug tác giả...">
+              </div>
+
+              <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Hình ảnh truyện</label>
                 <input type="file" class="form-control-file" name="hinhanh" onchange="previewImage(this);">
                 <div class="preview-image-container">
@@ -40,13 +50,9 @@
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tóm tắt truyện</label>
-                <textarea name="tomtat" class="form-control" rows="5" style="resize: none"></textarea>
+                <textarea name="tomtat" id="noidung_chuong" class="form-control" rows="5" style="resize: none"></textarea>
               </div>
 
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Tác giả</label>
-                <input name="tacgia" class="form-control" placeholder="Tác giả truyện..."></input>
-              </div>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Thể loại truyện</label>

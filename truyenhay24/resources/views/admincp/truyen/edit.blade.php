@@ -41,12 +41,17 @@
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tóm tắt truyện</label>
-                <textarea name="tomtat" class="form-control" rows="5" style="resize: none">{{$truyen->tomtat}}</textarea>
+                <textarea name="tomtat" id="noidung_chuong" class="form-control" rows="5" style="resize: none">{{$truyen->tomtat}}</textarea>
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tác giả</label>
-                <input name="tacgia" value="{{$truyen->tacgia}}" class="form-control" placeholder="Tác giả truyện..."></input>
+                <input id="slug_tacgia" name="tacgia" onkeyup="ChangeToSlugTacGia();" value="{{$truyen->tacgia}}" type="text" class="form-control" placeholder="Tên tác giả...">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Slug tác giả</label>
+                <input id="convert_slug_tacgia"  name="slug_tacgia" value="{{$truyen->slug_tacgia}}" type="text" class="form-control" placeholder="Slug tác giả...">
               </div>
 
               <div class="mb-3">

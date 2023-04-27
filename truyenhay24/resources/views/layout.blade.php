@@ -9,17 +9,24 @@
         <link href="{{ asset('css/owl.theme.default.min.css')}}" rel="stylesheet">
         <title>Truyện hay 24h</title>
         <style>
-.marquee {
-  animation: marquee 30s linear infinite;
-  white-space: nowrap;
+
+.welcome {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.welcome .marquee {
+  display: inline-block;
+  margin-bottom: 0;
+  animation: marquee 20s linear infinite;
 }
 
 @keyframes marquee {
-  from {
+  0% {
     transform: translateX(100%);
   }
   
-  to {
+  100% {
     transform: translateX(-100%);
   }
 }
@@ -60,90 +67,102 @@
 </style>
     </head>
     <body style="background-color: #ddd; overflow-x: hidden;">
-        <div>
-            <!-- menu -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-  <div class="container-fluid">
-    <a class="navbar-brand " href="{{url('/')}}"><i class="fa fa-leanpub" style="margin-right: 10px" aria-hidden="true"></i>TRUYỆN HAY</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa fa-bars" aria-hidden="true" style="margin-right: 5px"></i>Thể loại
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
-            @foreach($theloai as $key => $the)
-            <li><a class="dropdown-item" href="{{url('the-loai/'.$the->slug_theloai)}}">{{$the->tentheloai}}</a></li>
-            @endforeach
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa fa-bars" aria-hidden="true" style="margin-right: 5px"></i>Phân loại theo chương
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Dưới 100 chương</a></li>
-            <li><a class="dropdown-item" href="#">100-500 chương</a></li>
-            <li><a class="dropdown-item" href="#">Trên 500 chương</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa fa-cog" aria-hidden="true" style="margin-right: 5px"></i>Tùy chỉnh
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#"><i class="fa fa-font" aria-hidden="true" style="margin-right: 8px; font-size: 12px"></i>Font chữ</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa fa-sun-o" style="margin-right: 8px; font-size: 12px" aria-hidden="true"></i>Màu nền</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="d-flex justify-content-between" style="margin-right: 30px">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-        <button class="btn btn-warning text-light" type="submit">
-        <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
-      </form>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa fa-user" aria-hidden="true" style="margin-right: 5px"></i>Thành viên
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
-            <li><a class="dropdown-item" href="#">Đăng ký</a></li>
-          </ul>
-        </li>
-      </ul>
-      </div>
-    </div>
-  </div>
-</nav>
-<div style="background-color: #fff">
-<p class="marquee">
-<i class="fa fa-truck" aria-hidden="true" style="margin-right: 10px"></i>Đọc truyện online, đọc truyện chữ, truyện full, truyện hay. Tổng hợp đầy đủ và cập nhật liên tục. <i class="fa fa-heartbeat" aria-hidden="true" style="margin-left: 10px"></i>
-</div>
-</p>
-<div>
+    <div>
+          <!-- menu -->
+          <div>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+            <div class="container-fluid">
+              <a class="navbar-brand " href="{{url('/')}}">
+                <i class="fa fa-leanpub" style="margin-right: 10px" aria-hidden="true"></i>TRUYỆN HAY </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa fa-bars" aria-hidden="true" style="margin-right: 5px"></i>Thể loại </a>
+                    <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown"> @foreach($theloai as $key => $the) <li>
+                        <a class="dropdown-item" href="{{url('the-loai/'.$the->slug_theloai)}}">{{$the->tentheloai}}</a>
+                      </li> @endforeach </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa fa-bars" aria-hidden="true" style="margin-right: 5px"></i>Phân loại theo tác giả </a>
+                    <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">tg</a>
+                       
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa fa-cog" aria-hidden="true" style="margin-right: 5px"></i>Tùy chỉnh </a>
+                    <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <i class="fa fa-font" aria-hidden="true" style="margin-right: 8px; font-size: 12px"></i>Font chữ </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <i class="fa fa-sun-o" style="margin-right: 8px; font-size: 12px" aria-hidden="true"></i>Màu nền </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <div class="d-flex justify-content-between" style="margin-right: 30px">
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                    <button class="btn btn-warning text-light" type="submit">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                  </form>
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user" aria-hidden="true" style="margin-right: 5px"></i>Thành viên </a>
+                      <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
+                        <li>
+                          <a class="dropdown-item" href="#">Đăng nhập</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#">Đăng ký</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+          </div>
 
-<!-- Slider -->
-@yield('slide')
-<!-- Truyện mới -->
-@yield('content')
-<!-- footer -->
-<hr/>
-<div class="d-flex justify-content-between align-content-center m-4">
-<div class="col col-sm-10">Truyện Full - Đọc truyện online, đọc truyện chữ, truyện hay. Website luôn cập nhật những bộ truyện mới thuộc các thể loại đặc sắc như truyện tiên hiệp, truyện kiếm hiệp, hay truyện ngôn tình một cách nhanh nhất. Hỗ trợ mọi thiết bị như di động và máy tính bảng.</div>
-  <a href="#" class="btn btn-primary">
-    <i class="fa fa-arrow-up" aria-hidden="true"></i>
-  </a>
-</div>
-</div>
+          <!-- slide-welcome -->
+          <div class="welcome" style="background-color: #fff">
+            <p class="marquee">
+              <i class="fa fa-truck" aria-hidden="true" style="margin-right: 10px"></i>Đọc truyện online, đọc truyện chữ, truyện full, truyện hay. Tổng hợp đầy đủ và cập nhật liên tục. <i class="fa fa-heartbeat" aria-hidden="true" style="margin-left: 10px"></i>
+            </p>
+          </div>
 
-</div>
+
+          <div style="margin-top: 15px">
+            <!-- Slider --> @yield('slide')
+            <!-- Truyện mới --> @yield('content')
+            <!-- footer -->
+            <hr />
+            <div class="d-flex justify-content-between align-content-center m-4">
+              <div class="col col-sm-10">Truyện Full - Đọc truyện online, đọc truyện chữ, truyện hay. Website luôn cập nhật những bộ truyện mới thuộc các thể loại đặc sắc như truyện tiên hiệp, truyện kiếm hiệp, hay truyện ngôn tình một cách nhanh nhất. Hỗ trợ mọi thiết bị như di động và máy tính bảng.</div>
+              <a href="#" class="btn btn-primary">
+                <i class="fa fa-arrow-up" aria-hidden="true"></i>
+              </a>
+            </div>
+             <!-- footer -->
+
+          </div>
+
+
+        </div>
        <script src="{{ asset('js/app.js') }}" defer></script>
        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>

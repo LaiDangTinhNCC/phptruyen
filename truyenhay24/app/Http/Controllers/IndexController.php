@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
     public function home() {
         $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
-        $truyen = Truyen::orderBy('id','DESC')->where('kichhoat', 0)->get();
+        $truyen = Truyen::orderBy('id','DESC')->where('kichhoat', 0)->paginate(6);
         $truyen_hay = Truyen::orderBy('luotxem', 'DESC')->where('kichhoat', 0)->get();
         return view('pages.home')->with(compact('theloai', 'truyen', 'truyen_hay'));
     }
