@@ -8,7 +8,6 @@
 <div style="margin-top: 30px">
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px">
   <h6 style="font-weight: bold">TRUYỆN MỚI CẬP NHẬT<i class="fa fa-star" aria-hidden="true" style="margin-left: 10px"></i></h6>
-  <a href="" class="btn btn-sm btn-light">Xem thêm<i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 5px"></i></a>
   </div>
   
   <div class="container album py-1">
@@ -21,7 +20,7 @@
             <div class="d-block justify-content-center align-items-center" style="margin-top: 12px">
             <h6 class="text-center fw-bold" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 100%;">{{$value->tentruyen}}</h6>
               <div class="d-flex justify-content-center align-items-center">
-                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+              <button type="button" class="btn btn-sm btn-warning" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 100%;">{{$value->tacgia}}</button>
               </div>
             </div>
           </a>

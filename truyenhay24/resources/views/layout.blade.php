@@ -46,12 +46,6 @@
   width: 100%;
   color: #fff;
 }
-.bg-title .content h6{
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-}
-
 .col-content {
   cursor: pointer;
 }

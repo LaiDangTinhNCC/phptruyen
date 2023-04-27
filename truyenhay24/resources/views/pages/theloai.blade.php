@@ -28,7 +28,7 @@
             <div class="d-block justify-content-center align-items-center" style="margin-top: 12px">
             <h6 class="text-center fw-bold" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 100%;">{{$value->tentruyen}}</h6>
               <div class="d-flex justify-content-center align-items-center">
-                  <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+              <button type="button" class="btn btn-sm btn-warning" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 100%;">{{$value->tacgia}}</button>
               </div>
             </div>
           </a>

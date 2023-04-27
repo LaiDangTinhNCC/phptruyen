@@ -22,7 +22,7 @@
         <li>Tác giả: {{$truyen->tacgia}}</li>
         <li>Thể loại: <a href="{{url('the-loai/'.$truyen->theloaitruyen->slug_theloai)}}">{{$truyen->theloaitruyen->tentheloai}}</a></li>
         <li>Số chương: {{$mucluc}}</li>
-        <li>Số lượt xem: </li>
+        <li>Số lượt xem: {{$truyen->luotxem}}</li>
         <li><a href="">Xem mục lục</a></li>
         @if($chuong_dau)
         <li><a href="{{url('xem-chuong/'.$chuong_dau->slug_chuong)}}" class="btn btn-sm btn-primary">Đọc online</a></li>
@@ -52,7 +52,7 @@
         <img class="image-hover"  src="{{asset('public/uploads/truyen/'.$value->hinhanh)}}">
         <div class="d-flex flex-column" style="margin-top: 13px">
         <h6 class="text-center fw-bold" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 100%;">{{$value->tentruyen}}</h6>
-        <button type="button" class="btn btn-sm btn-warning">Full - 250 chương</button>
+        <button type="button" class="btn btn-sm btn-warning" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; width: 100%;">{{$value->tacgia}}</button>
       </div>
       </a>
     @endforeach
@@ -60,13 +60,15 @@
 </div>
   <div class="col-md-3">
       <h5>Truyện hay xem nhiều</h5>
-      <a class="col-md-3 d-flex flex-column justify-content-between" style="width: 135px">
-        <img class="image-hover"  src="{{asset('public/uploads/truyen/dau-la-dai-luc-23042045.jpg')}}">
+      @foreach($truyen_hay as $key => $value)
+      <a href="{{url('xem-truyen/'.$value->slug_truyen)}}" class="col-md-3 d-flex flex-column justify-content-between" style="width: 135px">
+        <img class="image-hover"  src="{{asset('public/uploads/truyen/'.$value->hinhanh)}}">
         <div class="d-flex flex-column" style="margin-top: 13px">
-          <h6 class="text-center fw-bold">Đấu la đại lục</h6>
-          <p class="text-center"><i class="fa fa-eye" aria-hidden="true" style="margin-right: 10px"></i>54632829</p>
+          <h6 class="text-center fw-bold">{{$value->tentruyen}}</h6>
+          <!-- <p class="text-center"><i class="fa fa-eye" aria-hidden="true" style="margin-right: 10px"></i>{{$value->luotxem}}</p> -->
         </div>
       </a>
+      @endforeach   
 
       
   </div>
