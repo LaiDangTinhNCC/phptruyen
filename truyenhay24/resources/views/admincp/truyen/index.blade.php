@@ -14,6 +14,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <form class="d-flex" style="margin-bottom: 10px">
+        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
                     <table class="table table-striped">
                         <thead>
                           <tr>

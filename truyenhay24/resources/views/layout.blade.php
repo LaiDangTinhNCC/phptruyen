@@ -7,6 +7,7 @@
         <link href="{{ asset('css/app.css')}}" rel="stylesheet">
         <link href="{{ asset('css/owl.carousel.min.css')}}" rel="stylesheet">
         <link href="{{ asset('css/owl.theme.default.min.css')}}" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
         <title>Truyện hay 24h</title>
         <style>
 
@@ -64,6 +65,46 @@
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
 }
+.bread_style {
+  padding: 10px;
+  border-radius: 5px;
+}
+.bread_style li a {
+  text-decoration: none;
+}
+  /* Style for the pagination links */
+  .pagination {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.pagination li {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.pagination li a {
+  display: block;
+  background-color: #f5f5f5;
+  color: #333;
+  border-radius: 5px;
+}
+
+.pagination li a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.pagination .active a {
+  background-color: #333;
+  color: #fff;
+}
+.page-link.active, .active > .page-link {
+  border-radius: 5px;
+}
+
 </style>
     </head>
     <body style="background-color: #ddd; overflow-x: hidden;">
@@ -92,7 +133,6 @@
                     <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
                       <li>
                         <a class="dropdown-item" href="#">tg</a>
-                       
                       </li>
                     </ul>
                   </li>
@@ -112,8 +152,9 @@
                   </li>
                 </ul>
                 <div class="d-flex justify-content-between" style="margin-right: 30px">
-                  <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                <!-- tim kiem -->
+                  <form class="d-flex" method="GET" action="{{url('tim-kiem/')}}">
+                    <input class="form-control me-2" name="tukhoa" type="search" placeholder="Tìm kiếm..." aria-label="Search">
                     <button class="btn btn-warning text-light" type="submit">
                       <i class="fa fa-search" aria-hidden="true"></i>
                     </button>

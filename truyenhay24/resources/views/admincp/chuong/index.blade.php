@@ -13,6 +13,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <form class="d-flex" style="margin-bottom: 10px">
+        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
                     <table class="table table-striped">
                         <thead>
                           <tr>
@@ -30,7 +36,7 @@
                             <th scope="row">{{$key}}</th>
                             <td>{{$chap->tieude}}</td>
                             <td>{{$chap->truyen->tentruyen}}</td>
-                            <td>{{$chap->noidung}}</td>
+                            <td>{{!! $chap->noidung !!}}</td>
                             <td>
                                 @if($chap->kichhoat==0)
                                 <span class="text text-success">Kích hoạt</span>

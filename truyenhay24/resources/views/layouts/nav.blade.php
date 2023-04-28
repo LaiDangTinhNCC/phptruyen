@@ -4,10 +4,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{route('home')}}">Admin</a>
+          <a class="nav-link active" aria-current="page" href="{{route('home')}}"><i class="fa fa-home" style="margin-right: 10px" aria-hidden="true"></i>Admin</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-bars" style="margin-right: 10px" aria-hidden="true"></i>
             Thể loại
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -17,6 +18,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-leanpub" style="margin-right: 10px" aria-hidden="true"></i>
             Truyện
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -26,6 +28,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-bookmark" style="margin-right: 10px" aria-hidden="true"></i>
             Chương
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -35,6 +38,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-user" style="margin-right: 10px" aria-hidden="true"></i>
             Người dùng
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,12 +46,6 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">
-        <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
-      </form>
     </div>
   </div>
 </nav>

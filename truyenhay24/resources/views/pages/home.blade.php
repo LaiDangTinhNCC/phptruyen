@@ -34,37 +34,4 @@
   a {
     text-decoration: none;
   }
-  /* Style for the pagination links */
-.pagination {
-  display: flex;
-  justify-content: center;
- 
-}
-
-.pagination li {
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.pagination li a {
-  display: block;
-  background-color: #f5f5f5;
-  color: #333;
-  border-radius: 5px;
-}
-
-.pagination li a:hover {
-  background-color: #333;
-  color: #fff;
-}
-
-.pagination .active a {
-  background-color: #333;
-  color: #fff;
-}
-.page-link.active, .active > .page-link {
-  border-radius: 5px;
-}
-
 </style> @endsection

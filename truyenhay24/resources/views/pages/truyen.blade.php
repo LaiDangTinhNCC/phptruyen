@@ -1,10 +1,15 @@
 @extends('../layout')
 @section('content')
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb bread-list">
-    <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Trang chủ</a></li>
-    <li class="breadcrumb-item"><a href="#">Library</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Data</li>
+  <ol class="container breadcrumb bread-list bg-light bread_style">
+    <li class="breadcrumb-item">
+      <a href="{{url('/')}}">
+        <i class="fa fa-home" style="margin-right:10px" aria-hidden="true"></i>Trang chủ </a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{{url('the-loai/'.$truyen->theloaitruyen->slug_theloai)}}">{{$truyen->theloaitruyen->tentheloai}}</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{$truyen->tentruyen}}</li>
   </ol>
 </nav>
 <div class="container row noidung">
@@ -55,6 +60,10 @@
       </div>
       </a>
     @endforeach
+     <!-- paginate -->
+     <div class="d-flex flex-row-reverse">
+    {{ $cungtheloai->links() }}
+    </div>
     </div>
 </div>
   <div class="col-md-3">

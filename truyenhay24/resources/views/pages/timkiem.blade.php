@@ -6,13 +6,13 @@
       <a href="{{url('/')}}">
         <i class="fa fa-home" style="margin-right:10px" aria-hidden="true"></i>Trang chủ </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">{{$tentheloai}}</li>
+    <li class="breadcrumb-item active" aria-current="page">Tìm kiếm</li>
   </ol>
 </nav>
 <div class="container">
 <div style="margin-top: 30px">
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px">
-  <h6 style="font-weight: bold">{{$tentheloai}}</h6>
+  <h6 style="font-weight: bold">Bạn đang tìm kiếm theo {{$tukhoa}}</h6>
   </div>
   
   <div class="container album py-1">
@@ -23,7 +23,7 @@
         <div class="col-md-12">
             <div class="card box-shadow">
                 <div class="card-body">
-                    <p>Truyện đang cập được cập nhật vui lòng quay lại sau.....</p>
+                    <p>Không tìm thấy truyện vui lòng quay lại sau.....</p>
                 </div>
             </div>
         </div>

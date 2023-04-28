@@ -25,6 +25,8 @@ Route::get('/the-loai/{slug}', [IndexController::class, 'theloai']);
 Route::get('/xem-truyen/{slug}', [IndexController::class, 'xemtruyen']);
 Route::get('/xem-chuong/{slug}', [IndexController::class, 'xemchuong']);
 
+Route::get('/tim-kiem', [IndexController::class, 'timkiem']);
+
 
 Auth::routes();
 
