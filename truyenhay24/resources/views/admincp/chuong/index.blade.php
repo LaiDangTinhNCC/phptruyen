@@ -19,13 +19,14 @@
         <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </form>
+
                     <table class="table table-striped">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Tiêu đề</th>
+                            <th scope="col" class="col-md-3">Tiêu đề</th>
                             <th scope="col">Thuộc truyện</th>
-                            <th scope="col">Nội dung</th>
+                            <th scope="col" class="col-md-5">Nội dung</th>
                             <th scope="col">Kích hoạt</th>
                             <th scope="col">Quản lý</th>
                           </tr>
@@ -36,7 +37,9 @@
                             <th scope="row">{{$key}}</th>
                             <td>{{$chap->tieude}}</td>
                             <td>{{$chap->truyen->tentruyen}}</td>
-                            <td>{{!! $chap->noidung !!}}</td>
+                            <td>
+                            <div class="noidung"> {{!! $chap->noidung !!}}</div>
+                           </td>
                             <td>
                                 @if($chap->kichhoat==0)
                                 <span class="text text-success">Kích hoạt</span>
@@ -60,9 +63,21 @@
                           @endforeach
                         </tbody>
                       </table>
-                </div>
+                
+                
+                    </div>
             </div>
         </div>
     </div>
 </div>
+<style>
+.noidung {
+height: 200px;
+overflow-y: hidden;
+}
+.noidung:hover {
+height: 200px;
+overflow-y: scroll !important;
+}
+</style>
 @endsection

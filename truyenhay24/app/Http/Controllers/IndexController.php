@@ -6,9 +6,25 @@ use Illuminate\Http\Request;
 use App\Models\TheloaiTruyen;
 use App\Models\Truyen;
 use App\Models\Chuong;
+use App\Models\Info;
+use Storage;
 
 class IndexController extends Controller
 {
+    // tim kiem nang cao
+    public function timkiem_ajax(Request $request){
+        $data = $request->all();
+        if($data['keywords']){
+            $truyen = Truyen::where('kichhoat',0)->where('tentruyen','LIKE','%'.$data['keywords'].'%')->get();
+            $output = '<ul class="dropdown-menu" style="display:block;padding: 10px">';
+            foreach($truyen as $key => $tr){
+                $output .= '<li class="li_search_ajax" style="margin-top: 10px; margin-bottom: 10px"><a href="'.url('xem-truyen/'.$tr->slug_truyen).'" style="color: #000; text-transform: uppercase">'.$tr->tentruyen.'</a></li>';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+    
     public function home() {
         $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
         $truyen = Truyen::orderBy('id','DESC')->where('kichhoat', 0)->paginate(6);
@@ -28,8 +44,9 @@ class IndexController extends Controller
         $chuong = Chuong::with('truyen')->orderBy('id', 'ASC')->where('truyen_id', $truyen->id)->get();
         $truyen_hay = Truyen::orderBy('luotxem', 'DESC')->where('kichhoat', 0)->take(3)->get();
         $chuong_dau = Chuong::with('truyen')->orderBy('id', 'ASC')->where('truyen_id', $truyen->id)->first();
+        $chuong_moi = Chuong::with('truyen')->orderBy('id', 'DESC')->where('truyen_id', $truyen->id)->first();
         $cungtheloai = Truyen::with('theloaitruyen')->where('theloai_id',$truyen->theloaitruyen->id)->whereNotIn('id',[$truyen->id])->paginate(5);
-        return view('pages.truyen')->with(compact('theloai', 'truyen', 'chuong', 'cungtheloai', 'chuong_dau', 'truyen_hay'));
+        return view('pages.truyen')->with(compact('theloai', 'truyen', 'chuong', 'cungtheloai', 'chuong_dau', 'truyen_hay', 'chuong_moi'));
     }
     public function xemchuong($slug){
         $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
@@ -44,10 +61,37 @@ class IndexController extends Controller
         return view('pages.chuong')->with(compact('theloai', 'chuong', 'all_chuong', 'next_chuong', 'prev_chuong', 'max_id','min_id','truyen_bread'));
     }
     //tim kiem
-    public function timkiem(){
+    public function timkiem(Request $request){
+        $data = $request->all();
         $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
-        $tukhoa = $_GET['tukhoa'];
+        $tukhoa = $data['tukhoa'];
         $truyen = Truyen::with('theloaitruyen')->where('tentruyen', 'LIKE', '%' .$tukhoa. '%')->orWhere('tomtat', 'LIKE', '%' .$tukhoa. '%')->orWhere('tacgia', 'LIKE', '%' .$tukhoa. '%')->get();
         return view('pages.timkiem')->with(compact('theloai','truyen','tukhoa'));
+    }
+    //tag
+    public function tag($tag){
+        $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
+        $tags = explode("-", $tag);
+        $truyen = Truyen::where(
+            function ($query) use($tags) {
+                for ($i = 0; $i < count($tags); $i++) {
+                    $query->orwhere('tukhoa', 'LIKE', '%'. $tags[$i] .'%');
+                }
+            }
+        )->paginate(10);
+        return view('pages.tag')->with(compact('theloai','truyen','tag'));
+    }
+    //tac gia
+    public function tacgia($tacgia){
+        $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
+        $tacgias = explode("-", $tacgia);
+        $truyen = Truyen::where(
+            function ($query) use($tacgias) {
+                for ($i = 0; $i < count($tacgias); $i++) {
+                    $query->orwhere('tacgia', 'LIKE', '%'. $tacgias[$i] .'%');
+                }
+            }
+        )->paginate(10);
+        return view('pages.tacgia')->with(compact('theloai','truyen','tacgia'));
     }
 }

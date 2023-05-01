@@ -1,7 +1,7 @@
 @extends('../layout')
 @section('content')
 <nav aria-label="breadcrumb">
-  <ol class="container breadcrumb bread-list bg-light bread_style">
+  <ol class="breadcrumb bread-list bread_style">
     <li class="breadcrumb-item">
       <a href="{{url('/')}}">
         <i class="fa fa-home" style="margin-right:10px" aria-hidden="true"></i>Trang chủ </a>
@@ -15,15 +15,15 @@
   <h6 style="font-weight: bold">{{$tentheloai}}</h6>
   </div>
   
-  <div class="container album py-1">
+  <div class="album py-1">
         @php
         $count = count($truyen);
         @endphp
         @if($count==0)
         <div class="col-md-12">
-            <div class="card box-shadow">
+            <div class="card box-shadow bg-warning">
                 <div class="card-body">
-                    <p>Truyện đang cập được cập nhật vui lòng quay lại sau.....</p>
+                    <p class="text-danger">Truyện đang cập được cập nhật vui lòng quay lại sau.....</p>
                 </div>
             </div>
         </div>

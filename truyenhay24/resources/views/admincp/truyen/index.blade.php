@@ -27,7 +27,8 @@
                             <th scope="col">Tên truyện</th>
                             <th scope="col">Hình ảnh</th>
                             <th scope="col">Tác giả</th>
-                            <!-- <th scope="col">Tóm tắt</th> -->
+                            <th scope="col">Từ khóa</th>
+                            <th scope="col">Lượt xem</th>
                             <th scope="col">Thể loại</th>
                             <th scope="col">Kích hoạt</th>
                             <th scope="col">Quản lý</th>
@@ -39,10 +40,11 @@
                             <th scope="row">{{$key}}</th>
                             <td>{{$truyen->tentruyen}}</td>
                             <td>
-                                <img src="{{asset('public/uploads/truyen/'.$truyen->hinhanh)}}" height="150" width="130">
+                                <img class="image-hover" src="{{asset('public/uploads/truyen/'.$truyen->hinhanh)}}" height="150" width="130">
                             </td>
                             <td>{{$truyen->tacgia}}</td>
-                            <!-- <td>{{$truyen->tomtat}}</td> -->
+                            <td>{{$truyen->tukhoa}}</td>
+                            <td>{{$truyen->luotxem}}</td>
                             <td>{{$truyen->theloaitruyen->tentheloai}}</td>
                             <td>
                                 @if($truyen->kichhoat==0)

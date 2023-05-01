@@ -7,6 +7,8 @@ use App\Http\Controllers\TruyenController;
 use App\Http\Controllers\ChuongController;
 use App\Http\Controllers\NguoiDungController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ThemeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +22,21 @@ use App\Http\Controllers\IndexController;
 */
 
 Route::get('/', [IndexController::class, 'home']);
-
+Route::get('/truyenhay_admin', [LoginController::class, 'login'])->name('login');
 Route::get('/the-loai/{slug}', [IndexController::class, 'theloai']);
 Route::get('/xem-truyen/{slug}', [IndexController::class, 'xemtruyen']);
 Route::get('/xem-chuong/{slug}', [IndexController::class, 'xemchuong']);
+Route::get('/tag/{tag}', [IndexController::class, 'tag']);
+Route::post('/tim-kiem', [IndexController::class, 'timkiem']);
+Route::post('/timkiem-ajax', [IndexController::class, 'timkiem_ajax']);
+Route::post('/save-theme', 'ThemeController@saveTheme');
 
-Route::get('/tim-kiem', [IndexController::class, 'timkiem']);
-
-
-Auth::routes();
+// auth
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false,
+]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

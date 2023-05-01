@@ -12,18 +12,18 @@
 <div class="container">
 <div style="margin-top: 30px">
   <div style="display: flex; justify-content: space-between; margin-bottom: 10px">
-  <h6 style="font-weight: bold">Bạn đang tìm kiếm theo {{$tukhoa}}</h6>
+  <h6 style="font-weight: bold">Bạn đang tìm kiếm theo {{$tag}}</h6>
   </div>
   
-  <div class="album py-1">
+  <div class="container album py-1">
         @php
         $count = count($truyen);
         @endphp
         @if($count==0)
         <div class="col-md-12">
-            <div class="card box-shadow bg-warning">
+            <div class="card box-shadow">
                 <div class="card-body">
-                    <p class="text-danger">Không tìm thấy truyện vui lòng quay lại sau.....</p>
+                    <p>Không tìm thấy truyện vui lòng quay lại sau.....</p>
                 </div>
             </div>
         </div>

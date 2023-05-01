@@ -58,7 +58,7 @@
   cursor: pointer;
 }
 .image-hover {
-  border: 3px solid #000;
+  border: 3px solid orange;
   height: 195px;
 }
 .image-hover:hover {
@@ -129,35 +129,37 @@
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa fa-bars" aria-hidden="true" style="margin-right: 5px"></i>Phân loại theo tác giả </a>
-                    <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#">tg</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-cog" aria-hidden="true" style="margin-right: 5px"></i>Tùy chỉnh </a>
                     <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <i class="fa fa-font" aria-hidden="true" style="margin-right: 8px; font-size: 12px"></i>Font chữ </a>
+                      <li class="font-setting" id="font-size-li">
+                      <a class="dropdown-item d-flex justify-content-center flex-column" href="#">
+                          <p> <i class="fa fa-font" style="margin-right: 10px" aria-hidden="true"></i>Font size</p>
+                          <input type="number" id="font-size-input" min="14" max="20">
+                        </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
-                          <i class="fa fa-sun-o" style="margin-right: 8px; font-size: 12px" aria-hidden="true"></i>Màu nền </a>
+                        <a class="dropdown-item d-flex justify-content-center flex-column" href="#">
+                          <p> <i class="fa fa-pie-chart" style="margin-right: 10px" aria-hidden="true"></i>Themes</p>
+                          <select id="theme-select" onchange="changeTheme()" class="form-select" aria-label="Default select example">
+                            <option value="dark">Dark</option>
+                            <option value="light">Light</option>
+                          </select>
+                        </a>
                       </li>
                     </ul>
                   </li>
                 </ul>
                 <div class="d-flex justify-content-between" style="margin-right: 30px">
                 <!-- tim kiem -->
-                  <form class="d-flex" method="GET" action="{{url('tim-kiem/')}}">
-                    <input class="form-control me-2" name="tukhoa" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-                    <button class="btn btn-warning text-light" type="submit">
+                  <form class="d-block" method="POST" action="{{url('tim-kiem/')}}">
+                  @csrf
+                  <div class="d-flex">
+                  <input class="form-control" id="keywords" name="tukhoa" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                  <button class="btn btn-warning text-light" style="margin-left: 10px" type="submit">
                       <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
+                  </button>
+                  </div>
+                    <div id="search_ajax" style="margin-top: 10px"></div>
                   </form>
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
@@ -208,35 +210,60 @@
        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
        <script type="text/javascript">
-        $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    responsiveClass:true,
-    autoplay:true,
-    autoplayTimeout:2000,
-    autoplayHoverPause:true,
-    responsive:{
-        0:{
-            items:1,
+$('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    responsiveClass: true,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1,
         },
-        200:{
-          items: 2,
+        200: {
+            items: 2,
         },
-        300:{
-          items: 3,
+        300: {
+            items: 3,
         },
-        600:{
-            items:4,
+        600: {
+            items: 4,
         },
         800: {
-          items:5,
+            items: 5,
         },
-        1000:{
-            items:8,
-            loop:false
+        1000: {
+            items: 8,
+            loop: false
         }
     }
 })
+       </script>
+       <!-- tim kiem nang cao -->
+       <script type="text/javascript">
+        $('#keywords').keyup(function(){
+          var keywords = $(this).val();
+          if(keywords != ''){
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+              url: "{{url('/timkiem-ajax')}}",
+              method:"POST",
+              data: {keywords:keywords, _token:_token},
+              success:function(data){
+                $('#search_ajax').fadeIn();
+                $('#search_ajax').html(data);
+              }
+            });
+          }else{
+            $('#search_ajax').fadeOut();
+          }
+        });
+
+        $(document).on('click', '.li_search_ajax', function(){
+          $('#keywords').val($(this).text());
+          $('#search_ajax').fadeOut()
+        });
        </script>
 <!--route chuong -->
        <script type="text/javascript">
@@ -252,5 +279,71 @@
           $('select[name="select-chuong"]').find('opition[value="'+url+'"]').attr("selected", true);
         }
        </script>
+       <!-- theme -->
+       <script>
+function changeTheme() {
+    var select = document.getElementById("theme-select");
+    var theme = select.options[select.selectedIndex].value;
+    var welcome = document.getElementsByClassName("welcome")[0];
+    var contentcard = document.getElementsByClassName("contentcard")[0];
+    var body = document.getElementsByTagName("body")[0];
+    if (theme === "dark") {
+        body.style.backgroundColor = "#333";
+        body.style.color = "#fff";
+        welcome.style.backgroundColor = "#ddd";
+        welcome.style.color = "orange";
+        contentcard.style.backgroundColor = "#333";
+        contentcard.style.color = "#fff";
+        contentcard.style.borderColor = "#fff";
+        localStorage.setItem("theme", "dark"); // Lưu giá trị của biến "theme" vào localstorage
+    } else if (theme === "light") {
+        body.style.backgroundColor = "#ddd";
+        body.style.color = "#000";
+        welcome.style.backgroundColor = "#fff";
+        welcome.style.color = "#000";
+        contentcard.style.backgroundColor = "#ddd";
+        contentcard.style.color = "#000";
+        contentcard.style.borderColor = "rgba(0, 0, 0, 0.175)";
+        localStorage.setItem("theme", "light"); // Lưu giá trị của biến "theme" vào localstorage
+    }
+}
+
+var savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+    changeTheme();
+    var select = document.getElementById("theme-select");
+    select.value = "dark";
+} else if (savedTheme === "light") {
+    changeTheme();
+    var select = document.getElementById("theme-select");
+    select.value = "light";
+}
+</script>
+<!-- thay doi font size -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const fontSizeInput = document.getElementById('font-size-input');
+  var font_content = document.getElementsByClassName("font_content")[0];
+  
+  // Lấy giá trị fontSize từ local storage nếu có
+  const storedFontSize = localStorage.getItem('fontSize');
+  if (storedFontSize) {
+    font_content.style.fontSize = storedFontSize;
+    fontSizeInput.value = parseInt(storedFontSize);
+  }
+  
+  fontSizeInput.addEventListener('input', () => {
+    let fontSize = fontSizeInput.value;
+    fontSize = Math.min(Math.max(parseInt(fontSize), 14), 20); // giới hạn giá trị từ 14 đến 20
+    fontSize = `${fontSize}px`;
+    font_content.style.fontSize = fontSize;
+
+    // Lưu giá trị fontSize vào local storage
+    localStorage.setItem('fontSize', fontSize);
+  });
+});
+
+</script>
+
     </body>
 </html>

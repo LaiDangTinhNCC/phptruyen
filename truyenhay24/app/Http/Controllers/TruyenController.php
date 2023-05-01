@@ -14,7 +14,7 @@ class TruyenController extends Controller
      */
     public function index()
     {
-        $list_truyen = Truyen::with('theloaitruyen')->orderBy('id', 'DESC')->get();
+        $list_truyen = Truyen::with('theloaitruyen')->orderBy('id', 'DESC')->paginate(4);
         return view('admincp.truyen.index')->with(compact('list_truyen'));
     }
 
@@ -43,6 +43,8 @@ class TruyenController extends Controller
                 'slug_truyen' => 'required|unique:truyen|max:255',
                 'tacgia' => 'required',
                 'slug_tacgia' => 'required',
+                'tukhoa' => 'required',
+                'luotxem' => 'required',
                 'tomtat' => 'required',
                 'theloai' => 'required',
                 'kichhoat' => 'required',
@@ -50,6 +52,9 @@ class TruyenController extends Controller
             ],
             [
                 'tentruyen.required' => 'Vui lòng nhập tên truyện',
+                'tacgia.required' => 'Vui lòng nhập tên tác giả',
+                'tukhoa.required' => 'Vui lòng nhập từ khóa tìm kiếm',
+                'luotxem.required' => 'Vui lòng nhập số lượt xem',
                 'tacgia.required' => 'Vui lòng nhập tên tác giả',
                 'tentruyen.unique' => 'Tên truyện đã tồn tại vui lòng điền tên khác',
                 'slug_truyen.required' => 'Vui lòng nhập slug truyện',
@@ -70,6 +75,8 @@ class TruyenController extends Controller
         $truyen->kichhoat = $data['kichhoat'];
         $truyen->theloai_id = $data['theloai'];
         $truyen->tomtat = $data['tomtat'];
+        $truyen->tukhoa = $data['tukhoa'];
+        $truyen->luotxem = $data['luotxem'];
         $get_image = $request->hinhanh;
         $path = 'public/uploads/truyen/';
         $get_name_image = $get_image->getClientOriginalName();
@@ -123,10 +130,14 @@ class TruyenController extends Controller
                 'tomtat' => 'required',
                 'theloai' => 'required',
                 'kichhoat' => 'required',
+                'tukhoa' => 'required',
+                'luotxem' => 'required',
             ],
             [
                 'tentruyen.required' => 'Vui lòng nhập tên truyện',
                 'tacgia.required' => 'Vui lòng nhập tên tác giả',
+                'tukhoa.required' => 'Vui lòng nhập từ khóa tìm kiếm',
+                'luotxem.required' => 'Vui lòng nhập số lượt xem',
                 'slug_truyen.required' => 'Vui lòng nhập slug truyện',
                 'tomtat.required' => 'Vui lòng nhập tóm tắt truyện',
                 'hinhanh.image' => 'File tải lên không phải là hình ảnh',
@@ -140,6 +151,8 @@ class TruyenController extends Controller
         $truyen->tacgia = $data['tacgia'];
         $truyen->slug_tacgia = $data['slug_tacgia'];
         $truyen->kichhoat = $data['kichhoat'];
+        $truyen->tukhoa = $data['tukhoa'];
+        $truyen->luotxem = $data['luotxem'];
         $truyen->theloai_id = $data['theloai'];
         $truyen->tomtat = $data['tomtat'];
         $get_image = $request->hinhanh;

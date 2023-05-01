@@ -34,8 +34,8 @@
                 <label for="exampleInputEmail1" class="form-label">Hình ảnh truyện</label>
                 <input type="file" class="form-control-file" name="hinhanh" onchange="previewImage(this);">
                 <div class="preview-image-container">
-                <img id="image_s" src="{{asset('public/uploads/truyen/'.$truyen->hinhanh)}}" style="max-width:300px; max-height:300px;">
-                <img id="preview-image" src="" alt="Preview Image" style="display:none; max-width:300px; max-height:300px;">
+                <img id="image_s" class="image-hover" src="{{asset('public/uploads/truyen/'.$truyen->hinhanh)}}" style="max-width:300px; max-height:300px;">
+                <img id="preview-image" class="image-hover" src="" alt="Preview Image" style="display:none; max-width:300px; max-height:300px;">
                 </div>
               </div>
 
@@ -52,6 +52,16 @@
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Slug tác giả</label>
                 <input id="convert_slug_tacgia"  name="slug_tacgia" value="{{$truyen->slug_tacgia}}" type="text" class="form-control" placeholder="Slug tác giả...">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Từ khóa</label>
+                <input name="tukhoa" value="{{$truyen->tukhoa}}" type="text" class="form-control" placeholder="Từ khóa...">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Lượt xem</label>
+                <input name="luotxem" value="{{$truyen->luotxem}}" type="number" class="form-control" placeholder="Lượt xem...">
               </div>
 
               <div class="mb-3">

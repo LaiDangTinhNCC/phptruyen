@@ -41,10 +41,20 @@
               </div>
 
               <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Từ khóa</label>
+                <input name="tukhoa" value="{{old('tukhoa')}}" type="text" class="form-control" placeholder="Từ khóa...">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Lượt xem</label>
+                <input name="luotxem" value="{{old('luotxem')}}" type="number" class="form-control" placeholder="Lượt xem...">
+              </div>
+
+              <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Hình ảnh truyện</label>
                 <input type="file" class="form-control-file" name="hinhanh" onchange="previewImage(this);">
                 <div class="preview-image-container">
-                <img id="preview-image" src="" alt="Preview Image" style="display:none; max-width:300px; max-height:300px;">
+                <img id="preview-image" src="" alt="Preview Image" class="image-hover" style="display:none; max-width:300px; max-height:300px;">
                 </div>
               </div>
 
