@@ -37,7 +37,7 @@
       </ul>
     </div>
   </div>
-    <div class="col-md-12 card mt-3 contentcard" style="background: #ddd">
+    <div class="col-md-12 card mt-3 contentcard">
     <div class="card-body">
     <h5 class="card-title">Tóm tắt nội dung</h5>
       <h6 class="card-text font_content">{{!! $truyen->tomtat !!}}</h6>
@@ -191,6 +191,8 @@
 .tagcloud05 ul li a:hover::before {
 	border-right-color: #555;
 }
-
+.contentcard {
+  background-color: #ddd
+}
 </style>
 @endsection

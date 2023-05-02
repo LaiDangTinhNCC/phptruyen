@@ -282,50 +282,53 @@ $('.owl-carousel').owlCarousel({
        <!-- theme -->
        <script>
 function changeTheme() {
-    var select = document.getElementById("theme-select");
-    var theme = select.options[select.selectedIndex].value;
-    var welcome = document.getElementsByClassName("welcome")[0];
-    var contentcard = document.getElementsByClassName("contentcard")[0];
-    var body = document.getElementsByTagName("body")[0];
-    if (theme === "dark") {
-        body.style.backgroundColor = "#333";
-        body.style.color = "#fff";
-        welcome.style.backgroundColor = "#ddd";
-        welcome.style.color = "orange";
-        contentcard.style.backgroundColor = "#333";
-        contentcard.style.color = "#fff";
-        contentcard.style.borderColor = "#fff";
-        localStorage.setItem("theme", "dark"); // Lưu giá trị của biến "theme" vào localstorage
-    } else if (theme === "light") {
-        body.style.backgroundColor = "#ddd";
-        body.style.color = "#000";
-        welcome.style.backgroundColor = "#fff";
-        welcome.style.color = "#000";
-        contentcard.style.backgroundColor = "#ddd";
-        contentcard.style.color = "#000";
-        contentcard.style.borderColor = "rgba(0, 0, 0, 0.175)";
-        localStorage.setItem("theme", "light"); // Lưu giá trị của biến "theme" vào localstorage
-    }
+  var select = document.getElementById("theme-select");
+  var theme = select.options[select.selectedIndex].value;
+  var welcome = document.getElementsByClassName("welcome")[0];
+  var contentcard = document.getElementsByClassName("contentcard")[0];
+  var body = document.getElementsByTagName("body")[0];
+  if (theme === "dark") {
+    body.style.backgroundColor = "#333";
+    body.style.color = "#fff";
+    welcome.style.backgroundColor = "#ddd";
+    welcome.style.color = "orange";
+    contentcard.style.backgroundColor = "#333";
+    contentcard.style.color = "#fff";
+    contentcard.style.borderColor = "#fff";
+    localStorage.setItem("theme", "dark");
+  } else if (theme === "light") {
+    localStorage.removeItem("theme", "dark");
+    body.style.backgroundColor = "#ddd";
+    body.style.color = "#000";
+    welcome.style.backgroundColor = "#fff";
+    welcome.style.color = "#000";
+    contentcard.style.backgroundColor = "#ddd";
+    contentcard.style.color = "#000";
+    contentcard.style.borderColor = "rgba(0, 0, 0, 0.175)";
+    localStorage.setItem("theme", "light");
+  }
 }
 
 var savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
-    changeTheme();
-    var select = document.getElementById("theme-select");
-    select.value = "dark";
+  var select = document.getElementById("theme-select");
+  select.value = "dark";
+  changeTheme();
 } else if (savedTheme === "light") {
-    changeTheme();
-    var select = document.getElementById("theme-select");
-    select.value = "light";
+  var select = document.getElementById("theme-select");
+  select.value = "light";
+  changeTheme();
+} else {
+  localStorage.removeItem("theme");
 }
+
+
 </script>
 <!-- thay doi font size -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const fontSizeInput = document.getElementById('font-size-input');
   var font_content = document.getElementsByClassName("font_content")[0];
-  
-  // Lấy giá trị fontSize từ local storage nếu có
   const storedFontSize = localStorage.getItem('fontSize');
   if (storedFontSize) {
     font_content.style.fontSize = storedFontSize;
@@ -337,8 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fontSize = Math.min(Math.max(parseInt(fontSize), 14), 20); // giới hạn giá trị từ 14 đến 20
     fontSize = `${fontSize}px`;
     font_content.style.fontSize = fontSize;
-
-    // Lưu giá trị fontSize vào local storage
     localStorage.setItem('fontSize', fontSize);
   });
 });
