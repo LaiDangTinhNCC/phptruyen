@@ -11,6 +11,10 @@ use Storage;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     // tim kiem nang cao
     public function timkiem_ajax(Request $request){
         $data = $request->all();
