@@ -60,11 +60,6 @@
               </div>
 
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Lượt xem</label>
-                <input name="luotxem" value="{{$truyen->luotxem}}" type="number" class="form-control" placeholder="Lượt xem...">
-              </div>
-
-              <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Thể loại truyện</label>
                 <select name="theloai" class="form-select" aria-label="Default select example">
                     @foreach($theloai as $key => $muc)

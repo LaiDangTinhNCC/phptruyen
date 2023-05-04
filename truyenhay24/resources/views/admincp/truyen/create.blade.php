@@ -46,11 +46,6 @@
               </div>
 
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Lượt xem</label>
-                <input name="luotxem" value="{{old('luotxem')}}" type="number" class="form-control" placeholder="Lượt xem...">
-              </div>
-
-              <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Hình ảnh truyện</label>
                 <input type="file" class="form-control-file" name="hinhanh" onchange="previewImage(this);">
                 <div class="preview-image-container">

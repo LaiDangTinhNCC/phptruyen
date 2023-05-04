@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('/theloai', TheloaiController::class);
     Route::resource('/truyen', TruyenController::class);
     Route::resource('/chuong', ChuongController::class);
+    Route::resource('/user', UserController::class);
 
 
     Route::get('/truyen-hay', [IndexController::class, 'home'])->name('home_user');

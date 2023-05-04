@@ -41,6 +41,8 @@ class IndexController extends Controller
     public function xemtruyen($slug) {
         $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
         $truyen = Truyen::with('theloaitruyen')->where('slug_truyen', $slug)->where('kichhoat', 0)->first();
+        $truyen->luotxem++;
+        $truyen->save();
         $chuong = Chuong::with('truyen')->orderBy('id', 'ASC')->where('truyen_id', $truyen->id)->get();
         $truyen_hay = Truyen::orderBy('luotxem', 'DESC')->where('kichhoat', 0)->take(3)->get();
         $chuong_dau = Chuong::with('truyen')->orderBy('id', 'ASC')->where('truyen_id', $truyen->id)->first();
