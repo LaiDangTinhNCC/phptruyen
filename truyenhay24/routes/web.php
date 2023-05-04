@@ -17,8 +17,11 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/admin', [HomeController::class, 'index'])->name('home');
     Route::resource('/theloai', TheloaiController::class);
+    Route::post('/tim-kiem-the-loai', [TheloaiController::class, 'timkiem']);
     Route::resource('/truyen', TruyenController::class);
+    Route::post('/tim-kiem-truyen', [TruyenController::class, 'timkiem']);
     Route::resource('/chuong', ChuongController::class);
+    Route::post('/tim-kiem-chuong', [ChuongController::class, 'timkiem']);
     Route::resource('/user', UserController::class);
 
 

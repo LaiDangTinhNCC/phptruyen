@@ -133,4 +133,18 @@ class ChuongController extends Controller
         Chuong::find($id)->delete();
         return redirect()->back()->with('status','Xóa chương thành công');
     }
+    public function timkiem(Request $request){
+        $truyen = Truyen::orderBy('id','DESC')->get();
+        $chuong = Chuong::with('truyen')->get();
+        $tukhoa = $request->input('tukhoa', ''); // set a default value of an empty string if $tukhoa is not present in the request
+        if ($tukhoa !== '') {
+            $chuong = Chuong::with('truyen')->where('tieude', 'LIKE', '%' .$tukhoa. '%')->orWhereHas('truyen', function ($query) use ($tukhoa) {
+                $query->where('tentruyen', 'LIKE', '%' .$tukhoa. '%');
+            })->get();
+        }
+        
+        return view('admincp.chuong.index')->with(compact('truyen', 'chuong', 'tukhoa'));
+    }
+    
+    
 }

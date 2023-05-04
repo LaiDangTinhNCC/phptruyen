@@ -13,12 +13,29 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                          <form class="d-flex" style="margin-bottom: 10px">
-        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">
-        <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
-      </form>
+                <!-- tim kiem -->
+                <form autocomplete="off" class="d-block" method="POST" action="{{url('tim-kiem-the-loai/')}}">
+                  @csrf
+                  <div class="d-flex">
+                  <input class="form-control" id="keywords" name="tukhoa" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                  <button class="btn btn-warning text-light" style="margin-left: 10px" type="submit">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+                  </div>
+                    <div id="search_ajax" style="margin-top: 10px"></div>
+                  </form>
+                  @php
+        $count = count($theloaitruyen);
+        @endphp
+        @if($count==0)
+        <div class="col-md-12">
+            <div class="card box-shadow bg-warning">
+                <div class="card-body">
+                    <p class="text-danger">Không tìm thấy thể loại truyện vui lòng quay lại sau.....</p>
+                </div>
+            </div>
+        </div>
+        @else
                     <table class="table table-striped">
                         <thead>
                           <tr>
@@ -56,6 +73,7 @@
                           @endforeach
                         </tbody>
                       </table>
+                      @endif
                 </div>
             </div>
         </div>

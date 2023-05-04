@@ -188,4 +188,13 @@ class TruyenController extends Controller
         Truyen::find($id)->delete();
         return redirect()->back()->with('status','Xóa truyện thành công');
     }
+    public function timkiem(Request $request){
+        $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
+        $list_truyen = Truyen::with('theloaitruyen')->orderBy('id', 'DESC')->paginate(4);
+        $tukhoa = $request->input('tukhoa', ''); 
+        if ($tukhoa !== '') {
+            $list_truyen = Truyen::with('theloaitruyen')->where('tentruyen', 'LIKE', '%' .$tukhoa. '%')->orWhere('tomtat', 'LIKE', '%' .$tukhoa. '%')->orWhere('tacgia', 'LIKE', '%' .$tukhoa. '%')->paginate(4);
+        }
+        return view('admincp.truyen.index')->with(compact('theloai','list_truyen','tukhoa'));
+    }
 }

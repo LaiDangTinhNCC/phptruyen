@@ -13,12 +13,25 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form class="d-flex" style="margin-bottom: 10px">
-        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">
+                    <form autocomplete="off" method="POST" action="{{url('tim-kiem-chuong/')}}" class="d-flex" style="margin-bottom: 10px">
+                    @csrf
+        <input name="tukhoa" class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+        <button class="btn btn-warning text-light" type="submit">
         <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </form>
+      @php
+        $count = count($chuong);
+        @endphp
+        @if($count==0)
+        <div class="col-md-12">
+            <div class="card box-shadow bg-warning">
+                <div class="card-body">
+                    <p class="text-danger">Không tìm thấy chương truyện vui lòng quay lại sau.....</p>
+                </div>
+            </div>
+        </div>
+        @else
 
                     <table class="table table-striped">
                         <thead>
@@ -63,7 +76,7 @@
                           @endforeach
                         </tbody>
                       </table>
-                
+                      @endif
                 
                     </div>
             </div>

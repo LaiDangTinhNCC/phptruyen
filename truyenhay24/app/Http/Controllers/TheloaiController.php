@@ -121,4 +121,13 @@ class TheloaiController extends Controller
         TheloaiTruyen::find($id)->delete();
         return redirect()->back()->with('status','Xóa thể loại thành công');
     }
+    public function timkiem(Request $request){
+        $tukhoa = $request->input('tukhoa', ''); 
+        if ($tukhoa !== '') {
+            $theloaitruyen = TheloaiTruyen::where('tentheloai', 'LIKE', '%'.$tukhoa.'%')->get();
+        }
+        $tukhoa = $data['tukhoa'];
+        $theloaitruyen = TheloaiTruyen::orderBy('id','DESC')->get();
+        return view('admincp.theloaitruyen.index')->with(compact('theloaitruyen','tukhoa'));
+    }
 }

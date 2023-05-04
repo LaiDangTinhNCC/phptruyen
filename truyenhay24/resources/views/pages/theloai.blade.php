@@ -3,7 +3,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb bread-list bread_style">
     <li class="breadcrumb-item">
-      <a href="{{url('/')}}">
+      <a href="{{url('/truyen-hay')}}">
         <i class="fa fa-home" style="margin-right:10px" aria-hidden="true"></i>Trang chủ </a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">{{$tentheloai}}</li>

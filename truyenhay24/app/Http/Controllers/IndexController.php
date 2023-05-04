@@ -83,17 +83,5 @@ class IndexController extends Controller
         )->paginate(10);
         return view('pages.tag')->with(compact('theloai','truyen','tag'));
     }
-    //tac gia
-    public function tacgia($tacgia){
-        $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
-        $tacgias = explode("-", $tacgia);
-        $truyen = Truyen::where(
-            function ($query) use($tacgias) {
-                for ($i = 0; $i < count($tacgias); $i++) {
-                    $query->orwhere('tacgia', 'LIKE', '%'. $tacgias[$i] .'%');
-                }
-            }
-        )->paginate(10);
-        return view('pages.tacgia')->with(compact('theloai','truyen','tacgia'));
-    }
+ 
 }

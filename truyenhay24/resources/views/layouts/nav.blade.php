@@ -42,7 +42,7 @@
             Users
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="">Liệt kê users</a></li>
+            <li><a class="dropdown-item" href="{{route('user.index')}}">Liệt kê users</a></li>
           </ul>
         </li>
       </ul>

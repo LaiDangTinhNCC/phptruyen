@@ -14,12 +14,25 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form class="d-flex" style="margin-bottom: 10px">
-        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">
+                    <form autocomplete="off" method="POST" class="d-flex" style="margin-bottom: 10px" action="{{url('tim-kiem-truyen/')}}">
+                    @csrf
+        <input class="form-control me-2" type="search" name="tukhoa" placeholder="Tìm kiếm" aria-label="Search">
+        <button class="btn btn-warning text-light" type="submit">
         <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </form>
+      @php
+        $count = count($list_truyen);
+        @endphp
+        @if($count==0)
+        <div class="col-md-12">
+            <div class="card box-shadow bg-warning">
+                <div class="card-body">
+                    <p class="text-danger">Không tìm thấy truyện vui lòng quay lại sau.....</p>
+                </div>
+            </div>
+        </div>
+        @else
                     <table class="table table-striped">
                         <thead>
                           <tr>
@@ -69,9 +82,49 @@
                           @endforeach
                         </tbody>
                       </table>
+                      @endif
                 </div>
+                
             </div>
+            <div class="d-flex flex-row-reverse mt-3">
+    {{ $list_truyen->links() }}
+    </div>
         </div>
     </div>
 </div>
+<style>
+      /* Style for the pagination links */
+  .pagination {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.pagination li {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.pagination li a {
+  display: block;
+  background-color: #f5f5f5;
+  color: #333;
+  border-radius: 5px;
+}
+
+.pagination li a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.pagination .active a {
+  background-color: #333;
+  color: #fff;
+}
+.page-link.active, .active > .page-link {
+  border-radius: 5px;
+}
+
+</style>
 @endsection
