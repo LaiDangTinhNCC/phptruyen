@@ -113,7 +113,7 @@
           <div>
           <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <div class="container-fluid">
-              <a class="navbar-brand " href="{{url('/')}}">
+              <a class="navbar-brand " href="{{url('/truyen-hay')}}">
                 <i class="fa fa-leanpub" style="margin-right: 10px" aria-hidden="true"></i>TRUYỆN HAY </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -151,7 +151,7 @@
                 </ul>
                 <div class="d-flex justify-content-between" style="margin-right: 30px">
                 <!-- tim kiem -->
-                  <form class="d-block" method="POST" action="{{url('tim-kiem/')}}">
+                  <form autocomplete="off" class="d-block" method="POST" action="{{url('tim-kiem/')}}">
                   @csrf
                   <div class="d-flex">
                   <input class="form-control" id="keywords" name="tukhoa" type="search" placeholder="Tìm kiếm..." aria-label="Search">
@@ -164,16 +164,21 @@
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-user" aria-hidden="true" style="margin-right: 5px"></i>Thành viên </a>
-                      <ul class="dropdown-menu dropdown-menu-dark bg-secondary" aria-labelledby="navbarDropdown">
+                        <i class="fa fa-user" aria-hidden="true" style="margin-right: 5px"></i>{{ Auth::user()->name }}</a>
+                      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end bg-secondary" aria-labelledby="navbarDropdown">
                         <li>
-                          <a class="dropdown-item" href="#">Đăng nhập</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" style="margin-right: 10px" aria-hidden="true"></i>Đăng xuất</a>
+                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                         </li>
                         <li>
-                          <a class="dropdown-item" href="#">Đăng ký</a>
+                          <a class="dropdown-item" href="{{ route('home') }}"><i class="fa fa-cogs" style="margin-right: 10px" aria-hidden="true"></i>Quản lý</a>
                         </li>
                       </ul>
                     </li>
+                    
                   </ul>
                 </div>
               </div>

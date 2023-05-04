@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="col-md-5">
             <div class="card">
-                <div class="card-header">Đăng nhập</div>
+                
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -51,15 +51,15 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="row">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button type="submit" class="btn btn-primary" style="margin-right: 10px">
                                     Đăng nhập
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-warning" href="{{ route('password.request') }}">
-                                      Quên mật khẩu
+                                @if (Route::has('register'))
+                                    <a class="btn btn-warning" href="{{ route('register') }}">
+                                      Đăng ký
                                     </a>
                                 @endif
                             </div>

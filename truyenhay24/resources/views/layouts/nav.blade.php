@@ -39,10 +39,10 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa fa-user" style="margin-right: 10px" aria-hidden="true"></i>
-            Người dùng
+            Users
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{{route('nguoidung.index')}}">Liệt kê người dùng</a></li>
+            <li><a class="dropdown-item" href="">Liệt kê users</a></li>
           </ul>
         </li>
       </ul>

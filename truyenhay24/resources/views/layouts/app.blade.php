@@ -39,7 +39,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                <i class="fa fa-book" style="margin-right: 10px" aria-hidden="true"></i>Trang quản lý
+                <i class="fa fa-book" style="margin-right: 10px" aria-hidden="true"></i>Truyện hay 24
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -82,6 +82,10 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    <a class="dropdown-item" href="{{ route('home_user') }}"
+                                    >
+                                        Trang user
+                                    </a>
                                 </div>
                             </li>
                         @endguest
