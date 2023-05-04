@@ -136,10 +136,10 @@ class ChuongController extends Controller
     public function timkiem(Request $request){
         $truyen = Truyen::orderBy('id','DESC')->get();
         $chuong = Chuong::with('truyen')->get();
-        $tukhoa = $request->input('tukhoa', ''); // set a default value of an empty string if $tukhoa is not present in the request
+        $tukhoa = $request->input('tukhoa', ''); 
         if ($tukhoa !== '') {
             $chuong = Chuong::with('truyen')->where('tieude', 'LIKE', '%' .$tukhoa. '%')->orWhereHas('truyen', function ($query) use ($tukhoa) {
-                $query->where('tentruyen', 'LIKE', '%' .$tukhoa. '%');
+                $query->where('tentruyen', 'LIKE', '%' .$tukhoa. '%')->orWhere('tacgia', 'LIKE', '%' .$tukhoa. '%');
             })->get();
         }
         

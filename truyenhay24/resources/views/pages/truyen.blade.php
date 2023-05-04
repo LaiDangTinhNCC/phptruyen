@@ -29,7 +29,8 @@
         <li>Số chương: {{$mucluc}}</li>
         <li>Số lượt xem: {{$truyen->luotxem}}</li>
         @if($chuong_dau)
-        <li><a href="{{url('xem-chuong/'.$chuong_dau->slug_chuong)}}" class="btn btn-sm btn-primary">Đọc online</a></li>
+        <li><a href="{{url('xem-chuong/'.$chuong_dau->slug_chuong)}}" class="btn btn-sm btn-primary" onclick="saveLastReadChapter('{{$chuong_dau->slug_chuong}}')">Đọc ngay</a>
+</li>
         <li><a href="{{url('xem-chuong/'.$chuong_moi->slug_chuong)}}" class="btn btn-sm btn-success mt-1">Đọc chương mới nhất</a></li>
         @else
         <li><button class="btn btn-sm btn-warning" disabled>Chương đang cập nhật</button></li>
@@ -96,6 +97,11 @@
       
   </div>
 </div>
+<script>
+function saveLastReadChapter(slug) {
+  localStorage.setItem('lastReadChapter', slug);
+}
+</script>
 <style>
   a{ text-decoration: none;}
   .bread-list{

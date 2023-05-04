@@ -48,6 +48,13 @@ class IndexController extends Controller
         $chuong_dau = Chuong::with('truyen')->orderBy('id', 'ASC')->where('truyen_id', $truyen->id)->first();
         $chuong_moi = Chuong::with('truyen')->orderBy('id', 'DESC')->where('truyen_id', $truyen->id)->first();
         $cungtheloai = Truyen::with('theloaitruyen')->where('theloai_id',$truyen->theloaitruyen->id)->whereNotIn('id',[$truyen->id])->paginate(5);
+        $lastReadChapterSlug = isset($_COOKIE['lastReadChapter']) ? $_COOKIE['lastReadChapter'] : null;
+        if ($lastReadChapterSlug) {
+          $lastReadChapter = Chuong::with('truyen')->where('slug_chuong', $lastReadChapterSlug)->where('truyen_id', $truyen->id)->first();
+          if ($lastReadChapter) {
+            return redirect()->to('xem-chuong/'.$lastReadChapterSlug);
+          }
+        }
         return view('pages.truyen')->with(compact('theloai', 'truyen', 'chuong', 'cungtheloai', 'chuong_dau', 'truyen_hay', 'chuong_moi'));
     }
     public function xemchuong($slug){
@@ -60,6 +67,8 @@ class IndexController extends Controller
         $max_id = Chuong::where('truyen_id',$truyen->truyen_id)->orderBy('id', 'DESC')->first();
         $min_id = Chuong::where('truyen_id',$truyen->truyen_id)->orderBy('id', 'ASC')->first();
         $truyen_bread = Truyen::with('theloaitruyen')->where('id', $truyen->truyen_id)->first();
+        $lastReadChapterSlug = $slug;
+        setcookie('lastReadChapter', $lastReadChapterSlug, time() + (86400 * 30), "/"); // set the cookie to expire in 30 days
         return view('pages.chuong')->with(compact('theloai', 'chuong', 'all_chuong', 'next_chuong', 'prev_chuong', 'max_id','min_id','truyen_bread'));
     }
     //tim kiem
