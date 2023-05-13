@@ -14,8 +14,8 @@ class ChuongController extends Controller
      */
     public function index()
     {
-        $chuong = Chuong::with('truyen')->orderBy('id', 'DESC')->get();
-        return view('admincp.chuong.index')->with(compact('chuong'));
+        $chuong_t = Chuong::with('truyen')->orderBy('id', 'DESC')->paginate(4);
+        return view('admincp.chuong.index')->with(compact('chuong_t'));
     }
 
     /**
@@ -135,15 +135,15 @@ class ChuongController extends Controller
     }
     public function timkiem(Request $request){
         $truyen = Truyen::orderBy('id','DESC')->get();
-        $chuong = Chuong::with('truyen')->get();
+        $chuong_t = Chuong::with('truyen')->paginate(4);
         $tukhoa = $request->input('tukhoa', ''); 
         if ($tukhoa !== '') {
-            $chuong = Chuong::with('truyen')->where('tieude', 'LIKE', '%' .$tukhoa. '%')->orWhereHas('truyen', function ($query) use ($tukhoa) {
+            $chuong_t = Chuong::with('truyen')->where('tieude', 'LIKE', '%' .$tukhoa. '%')->orWhereHas('truyen', function ($query) use ($tukhoa) {
                 $query->where('tentruyen', 'LIKE', '%' .$tukhoa. '%')->orWhere('tacgia', 'LIKE', '%' .$tukhoa. '%');
-            })->get();
+            })->paginate(4);
         }
         
-        return view('admincp.chuong.index')->with(compact('truyen', 'chuong', 'tukhoa'));
+        return view('admincp.chuong.index')->with(compact('truyen', 'chuong_t', 'tukhoa'));
     }
     
     

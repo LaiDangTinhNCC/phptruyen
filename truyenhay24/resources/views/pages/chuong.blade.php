@@ -52,6 +52,69 @@
         </a>
       </div>
     </div>
+    <!-- Binh luan -->
+    <form method="POST" action="{{ route('binhluan.store') }}">
+    @csrf
+    <div class="d-flex justify-content-between flex-column mb-3 mt-3">
+        <div class="mb-3">
+            <textarea name="noidung" type="text" class="form-control" placeholder="Nhập nội dung bình luận...">{{ old('noidung') }}</textarea>
+        </div>
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+        <input type="hidden" name="chuong_id" value="{{ $chuong->id }}">
+        <button type="submit" class="btn btn-primary">Thêm bình luận</button>
+    </div>
+</form>
+    @foreach($comment as $key => $binhluan)
+    <div>
+    <div class="card mb-3">
+  <div class="card-header">
+  <i class="fa fa-user" aria-hidden="true"></i> {{$binhluan->user->name}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item d-flex justify-content-between align-content-center">
+      <p>{{$binhluan->noidung}}</p>
+      @if($binhluan->user->name === Auth::user()->name)
+      <div>
+      </div>
+  <div class="d-flex align-items-center">
+  <button class="btn btn-sm btn-primary m-2 btn-edit">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+  </button>
+  
+    <form action="{{route('binhluan.destroy',[$binhluan->id])}}" method="POST">
+        @method('DELETE')
+        @csrf
+        <button class="btn btn-sm btn-danger">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+    </form>
+  </div>
+@endif
+    </li>
+    @if($binhluan->user->name === Auth::user()->name)
+    <li class="list-group-item">
+    <form method="POST" action="{{ route('binhluan.update',[$binhluan->id]) }}" class="form-edit d-none">
+  @method('PUT')
+  @csrf
+    <div class="d-flex">
+        <div>
+            <textarea value="{{$binhluan->noidung}}}" name="noidung" type="text" class="form-control" placeholder="Nhập nội dung bình luận...">{{$binhluan->noidung}}</textarea>
+        </div>
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+        <input type="hidden" name="chuong_id" value="{{ $chuong->id }}">
+        <div style="margin-left: 5px; padding: 10px">
+        <button type="submit" class="btn btn-primary btn-edit">Cập nhật</button>
+      </div>
+    </div>
+</form>
+    </li>
+    @endif
+    <li class="list-group-item">{{$binhluan->updated_at}}</li>
+  </ul>
+</div>
+
+    </div>
+    @endforeach
   </div>
 </div>
 <style>

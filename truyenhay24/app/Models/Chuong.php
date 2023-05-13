@@ -21,4 +21,7 @@ class Chuong extends Model
     public function truyen() {
         return $this->belongsTo('App\Models\Truyen');
     }
+    public function binhluan() {
+        return $this->belongsTo('App\Models\Binhluan');
+    }
 }

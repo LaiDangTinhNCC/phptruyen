@@ -21,7 +21,7 @@
         </button>
       </form>
       @php
-        $count = count($chuong);
+        $count = count($chuong_t);
         @endphp
         @if($count==0)
         <div class="col-md-12">
@@ -45,7 +45,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($chuong as $key => $chap)
+                            @foreach($chuong_t as $key => $chap)
                           <tr>
                             <th scope="row">{{$key}}</th>
                             <td>{{$chap->tieude}}</td>
@@ -80,6 +80,9 @@
                 
                     </div>
             </div>
+            <div class="d-flex flex-row-reverse mt-3">
+    {{ $chuong_t->links() }}
+    </div>
         </div>
     </div>
 </div>
@@ -91,6 +94,38 @@ overflow-y: hidden;
 .noidung:hover {
 height: 200px;
 overflow-y: scroll !important;
+}
+      /* Style for the pagination links */
+      .pagination {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.pagination li {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.pagination li a {
+  display: block;
+  background-color: #f5f5f5;
+  color: #333;
+  border-radius: 5px;
+}
+
+.pagination li a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.pagination .active a {
+  background-color: #333;
+  color: #fff;
+}
+.page-link.active, .active > .page-link {
+  border-radius: 5px;
 }
 </style>
 @endsection

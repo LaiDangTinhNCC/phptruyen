@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TheloaiTruyen;
 use App\Models\Truyen;
+use App\Models\User;
+use App\Models\Binhluan;
 use App\Models\Chuong;
 use App\Models\Info;
 use Storage;
@@ -64,6 +66,8 @@ class IndexController extends Controller
     public function xemchuong($slug){
         $theloai = TheloaiTruyen::orderBy('id','DESC')->get();
         $truyen = Chuong::where('slug_chuong',$slug)->first();
+        $user = User::orderBy('id', 'DESC')->get();
+        $comment = Binhluan::with('user', 'chuong')->orderBy('id', 'ASC')->where('chuong_id', $truyen->id)->get();
         $chuong = Chuong::with('truyen')->where('slug_chuong', $slug)->where('truyen_id', $truyen->truyen_id)->first();
         $all_chuong = Chuong::with('truyen')->orderBy('id','ASC')->where('truyen_id', $truyen->truyen_id)->get();
         $next_chuong = Chuong::where('truyen_id',$truyen->truyen_id)->where('id','>',$chuong->id)->min('slug_chuong');
@@ -73,7 +77,7 @@ class IndexController extends Controller
         $truyen_bread = Truyen::with('theloaitruyen')->where('id', $truyen->truyen_id)->first();
         $lastReadChapterSlug = $slug;
         setcookie('lastReadChapter', $lastReadChapterSlug, time() + (86400 * 30), "/"); // set the cookie to expire in 30 days
-        return view('pages.chuong')->with(compact('theloai', 'chuong', 'all_chuong', 'next_chuong', 'prev_chuong', 'max_id','min_id','truyen_bread'));
+        return view('pages.chuong')->with(compact('theloai', 'chuong', 'all_chuong', 'next_chuong', 'prev_chuong', 'max_id','min_id','truyen_bread', 'comment'));
     }
     //tim kiem
     public function timkiem(Request $request){

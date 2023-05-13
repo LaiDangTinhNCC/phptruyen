@@ -70,7 +70,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->is_admin = $request->has('is_admin') ? 1 : null;
+        $user->save();
+        return redirect()->back()->with('status','Cập nhật user thành công');
     }
 
     /**

@@ -38,7 +38,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/admin') }}">
                 <i class="fa fa-book" style="margin-right: 10px" aria-hidden="true"></i>Truyện hay 24
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -55,7 +55,7 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            <!-- @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
                                 </li>
@@ -65,7 +65,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">Đăng ký</a>
                                 </li>
-                            @endif
+                            @endif -->
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -90,6 +90,8 @@
                             </li>
                         @endguest
                     </ul>
+
+                    
                 </div>
             </div>
         </nav>

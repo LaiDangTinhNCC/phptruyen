@@ -26,10 +26,14 @@ class User extends Authenticatable
         'created_at',
         'updated_at',
         'email_verified_at',
+        'is_admin',
         'remember_token'
     ];
     protected $primaryKey = 'id';
     protected $table = 'users';
+    public function truyen() {
+        return $this->hasMany('App\Models\Binhluan');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

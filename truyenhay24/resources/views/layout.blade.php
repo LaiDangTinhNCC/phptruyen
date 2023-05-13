@@ -174,7 +174,7 @@
                                     </form>
                         </li>
                         <li>
-                          <a class="dropdown-item" href="{{ route('home') }}"><i class="fa fa-cogs" style="margin-right: 10px" aria-hidden="true"></i>Quản lý</a>
+                        <a class="dropdown-item {{ Auth::user()->is_admin!=1 ? 'd-none' : '' }}" href="{{ route('home') }}"><i class="fa fa-cogs" style="margin-right: 10px" aria-hidden="true"></i>Quản lý</a>
                         </li>
                       </ul>
                     </li>
@@ -326,8 +326,6 @@ if (savedTheme === "dark") {
 } else {
   localStorage.removeItem("theme");
 }
-
-
 </script>
 <!-- thay doi font size -->
 <script>
@@ -349,6 +347,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+</script>
+
+<script src="//cdn.ckeditor.com/4.21.0/full/ckeditor.js"></script>
+<script type="text/javascript">
+    CKEDITOR.replace('noidung_comment');
+</script>
+<script>
+  $(document).ready(function() {
+  $('.btn-edit').click(function() {
+    $('.form-edit').toggleClass('d-none');
+  });
+});
 </script>
 
     </body>
